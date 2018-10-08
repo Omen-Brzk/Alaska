@@ -6,7 +6,7 @@
  * Time: 10:18
  */
 
-require_once ('../tools.php');
+require_once ('tools.php');
 spl_autoload_register('loadClass');
 
 class CommentManager extends Database
@@ -102,7 +102,7 @@ class CommentManager extends Database
         {
             array_push($commentsList, new Comment($comment));
         }
-
+        $req->closeCursor();
         return $commentsList;
     }
 }

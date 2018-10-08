@@ -11,7 +11,7 @@ class Post
     private $_id ;
     private $_title;
     private $_content;
-    private $_creation_Date;
+    private $_creationDate;
 
     /**
      * Post constructor.
@@ -72,7 +72,7 @@ class Post
      */
     public function getCreationDate()
     {
-        return $this->_creation_Date;
+        return $this->_creationDate;
     }
 
     /**
@@ -86,7 +86,7 @@ class Post
     {
         $id = (int) $id;
 
-        if($id < 0)
+        if($id > 0)
         {
             $this->_id = $id;
         }
@@ -119,9 +119,9 @@ class Post
      */
     public function setCreationDate($date)
     {
-        if (is_string($date))
+        if (is_string($date) && strlen($date) < 255)
         {
-            $this->_creation_Date = $date;
+            $this->_creationDate = $date;
         }
     }
 

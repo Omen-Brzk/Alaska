@@ -6,8 +6,8 @@
  * Time: 08:43
  */
 
-require_once ('../tools.php');
-spl_autoload('loadClass');
+require_once ('tools.php');
+spl_autoload_register('loadClass');
 
 class PostManager extends Database
 {
@@ -28,7 +28,7 @@ class PostManager extends Database
 
         $req->bindValue(':title', $post->getTitle());
         $req->bindValue(':content', $post->getContent());
-        $req->bindValue(':creation_date', new DateTime());
+        $req->bindValue(':creation_date', $post->getCreationDate());
 
         return $req->execute();
     }
@@ -66,13 +66,14 @@ class PostManager extends Database
 
     public function getAllPost()
     {
-        $req = $this->_db->prepare('SELECT * FROM posts');
+        $postsList = [];
+        $req = $this->_db->query('SELECT * FROM posts');
 
         while($post = $req->fetch(PDO::FETCH_ASSOC))
         {
-            array_push($postsList, new Post($post))
+            array_push($postsList, new Post($post));
         }
-
+        $req->closeCursor();
         return $postsList;
     }
 }

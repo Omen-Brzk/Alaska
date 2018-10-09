@@ -24,22 +24,22 @@ class PostManager extends Database
 
     public function createPost(Post $post)
     {
-        $req = $this->_db->prepare('INSERT INTO posts(title, content, creation_date) VALUES (:title, :content, :creation_date)');
+        $req = $this->_db->prepare('INSERT INTO posts(title, content, creationDate) VALUES (:title, :content, :creationDate)');
 
         $req->bindValue(':title', $post->getTitle());
         $req->bindValue(':content', $post->getContent());
-        $req->bindValue(':creation_date', $post->getCreationDate());
+        $req->bindValue(':creationDate', $post->getCreationDate());
 
         return $req->execute();
     }
 
     public function  updatePost(Post $post)
     {
-        $req = $this->_db->prepare('UPDATE posts SET title = :title, content = :content, creation_date = :creation_date WHERE id = ' . $post->getId());
+        $req = $this->_db->prepare('UPDATE posts SET title = :title, content = :content, creationDate = :creationDate WHERE id = ' . $post->getId());
 
         $req->bindValue(':title', $post->getTitle());
         $req->bindValue(':content', $post->getContent());
-        $req->bindValue(':creation_date', new DateTime());
+        $req->bindValue(':creationDate', new DateTime());
 
         return $req->execute();
     }
@@ -56,7 +56,7 @@ class PostManager extends Database
 
         $req->execute();
 
-        $data = $req->fetch();
+        $data = $req->fetch(PDO::FETCH_ASSOC);
 
         if (is_array($data))
         {

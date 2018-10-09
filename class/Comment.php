@@ -9,10 +9,10 @@
 class Comment
 {
     private $_id;
-    private $_post_id;
+    private $_postId;
     private $_author;
-    private $_comment;
-    private $_comment_date;
+    private $_commentText;
+    private $_commentDate;
     private $_reports;
 
     /**
@@ -33,9 +33,9 @@ class Comment
         foreach ($datas as $key => $value) {
             $method = 'set' . ucfirst($key);
 
-            if (method_exists($this, $method)) {
+            if (method_exists($this, $method))
                 $this->$method($value);
-            }
+            else throw new Exception("Exception | " . $method . "() : La méthode invoquée n'existe pas");
         }
     }
 
@@ -56,7 +56,7 @@ class Comment
      */
     public function getPostId()
     {
-        return $this->_post_id;
+        return $this->_postId;
     }
 
     /**
@@ -70,9 +70,9 @@ class Comment
     /**
      * @return mixed
      */
-    public function getComment()
+    public function getCommentText()
     {
-        return $this->_comment;
+        return $this->_commentText;
     }
 
     /**
@@ -80,7 +80,7 @@ class Comment
      */
     public function getCommentDate()
     {
-        return $this->_comment_date;
+        return $this->_commentDate;
     }
 
     /**
@@ -102,7 +102,7 @@ class Comment
     {
         $id = (int) $id;
 
-        if ($id < 0)
+        if ($id > 0)
         {
             $this->_id = $id;
         }
@@ -115,9 +115,9 @@ class Comment
     {
         $postId = (int) $postId;
 
-        if ($postId < 0)
+        if ($postId > 0)
         {
-            $this->_post_id = $postId;
+            $this->_postId = $postId;
         }
     }
 
@@ -135,11 +135,11 @@ class Comment
     /**
      * @param $comment
      */
-    public function setComment($comment)
+    public function setCommentText($comment)
     {
         if (is_string($comment))
         {
-            $this->_comment = $comment;
+            $this->_commentText = $comment;
         }
     }
 
@@ -150,7 +150,7 @@ class Comment
     {
         if (is_string($date))
         {
-            $this->_comment_date = $date;
+            $this->_commentDate = $date;
         }
     }
 
@@ -161,7 +161,7 @@ class Comment
     {
         $reports = (int) $reports;
 
-        if ($reports < 0)
+        if ($reports >= 0)
         {
             $this->_reports = $reports;
         }

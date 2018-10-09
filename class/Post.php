@@ -33,9 +33,9 @@ class Post
             $method = 'set' . ucfirst($key);
 
             if (method_exists($this, $method))
-            {
                 $this->$method($value);
-            }
+            else throw new Exception("Exception | " . $method . "() : La méthode invoquée n'existe pas");
+
         }
     }
 

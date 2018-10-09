@@ -24,12 +24,12 @@ class CommentManager extends Database
 
     public function createComment(Comment $comment)
     {
-        $req = $this->_db->prepare('INSERT INTO comments(post_id, author, comment_text, comment_date, reports) VALUES (:postId, :author, :commentText, :commentDate, :reports)');
+        $req = $this->_db->prepare('INSERT INTO comments(postId, author, commentText, commentDate, reports) VALUES (:postId, :author, :commentText, :commentDate, :reports)');
 
         $req->bindValue(':postId' , $comment->getPostId());
         $req->bindValue(':author' , $comment->getAuthor());
         $req->bindValue(':commentText' , $comment->getComment());
-        $req->bindValue(':commentDate' , $comment, new DateTime());
+        $req->bindValue(':commentDate' , $comment->getCommentDate());
         $req->bindValue(':reports' , $comment->getReports());
 
         return $req->execute();
@@ -37,7 +37,7 @@ class CommentManager extends Database
 
     public function updateComment(Comment $comment)
     {
-        $req = $this->_db->prepare('UPDATE comments SET  post_id = :postId, author = :author, comment_text = :commentText, reports = :reports WHERE id = ' . $comment->getId());
+        $req = $this->_db->prepare('UPDATE comments SET  postId = :postId, author = :author, commentText = :commentText, reports = :reports WHERE id = ' . $comment->getId());
 
         $req->bindValue(':postId' , $comment->getPostId());
         $req->bindValue(':author' , $comment->getAuthor());
@@ -72,7 +72,7 @@ class CommentManager extends Database
     {
         $commentsList = [];
 
-        $req = $this->_db->prepare('SELECT * FROM comments WHERE post_id = :postId');
+        $req = $this->_db->prepare('SELECT * FROM comments WHERE postId = :postId');
         $req->bindValue(':postId' , (int)$postId);
 
         $req->execute();

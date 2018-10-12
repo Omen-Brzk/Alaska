@@ -24,3 +24,23 @@
     <script src="public/inc/js/bootsrap/bootstrap.min.js"></script>
     <link href="public/inc/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 </head>
+
+<?php
+    if(isset($_SESSION['user']))
+        echo '<a href="index.php?action=disconnect">déconnexion</a>';
+        elseif(isset($_GET['action']))
+        {
+            if($_GET['action'] == 'register')
+            {
+                return NULL;
+            }
+            elseif($_GET['action'] =='login')
+            {
+                return NULL;
+            }
+
+        } else {
+        echo '<a href="index.php?action=login">Se connecter</a> ou <a href="index.php?action=register">s\'inscrire</a>';
+    }
+
+?>

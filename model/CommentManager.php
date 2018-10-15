@@ -28,7 +28,7 @@ class CommentManager extends Database
 
         $req->bindValue(':postId' , $comment->getPostId());
         $req->bindValue(':author' , $comment->getAuthor());
-        $req->bindValue(':commentText' , $comment->getComment());
+        $req->bindValue(':commentText' , $comment->getCommentText());
         $req->bindValue(':commentDate' , $comment->getCommentDate());
         $req->bindValue(':reports' , $comment->getReports());
 
@@ -41,7 +41,7 @@ class CommentManager extends Database
 
         $req->bindValue(':postId' , $comment->getPostId());
         $req->bindValue(':author' , $comment->getAuthor());
-        $req->bindValue(':commentText' , $comment->getComment());
+        $req->bindValue(':commentText' , $comment->getCommentText());
         $req->bindValue(':commentDate' , $comment, new DateTime());
         $req->bindValue(':reports' , $comment->getReports());
 
@@ -102,6 +102,7 @@ class CommentManager extends Database
         {
             array_push($commentsList, new Comment($comment));
         }
+
         $req->closeCursor();
         return $commentsList;
     }

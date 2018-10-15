@@ -123,19 +123,29 @@ function showUserAccount($user)
         header('Location: index.php');
     }
 
-    $title = 'Mon compte';
-    require('view/frontend/account.php');
+    if(isset($_SESSION['user']) && $_SESSION['user']->getGroupId() == User::IS_USER )
+    {
+        $title = 'Mon compte';
+        require('view/frontend/account.php');
+    }
+
+    elseif(isset($_SESSION['user']) && $_SESSION['user']->getGroupId() == User::IS_AUTHOR OR User::IS_ADMIN )
+    {
+        admin_showPanel();
+    }
+
+
 }
 
 function sendUserLogin($datas)
 {
-
-
+    $title = 'Connexion';
     if(isset($_SESSION['user']))
         return showUserAlreadyLogged();
 
     if($datas['username'] != '' && $datas['userpass'] !='')
     {
+        $_COOKIE['user_get_name'] = setcookie('user_get_name', '', time()+3600, null,null,false,true);
        $userManager = new UserManager();
        $user = $userManager->getUserByNameOrId($datas['username']);
 
@@ -145,8 +155,19 @@ function sendUserLogin($datas)
 
            if($password_verify)
            {
+               if (isset($_COOKIE['user_get_name']))
+               {
+                   setcookie('user_get_name', '', time()-3600);
+               }
+
                $_SESSION['user'] = $user;
                header('Location: index.php?action=showAccount');
+           }
+           else
+           {
+               setcookie('user_get_name', $datas['username'], time()+3600, null, null, false, true);
+               $message = "Mauvais pseudo ou mot de passe.";
+               require('view/frontend/login.php');
            }
        }
        else

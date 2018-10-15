@@ -21,11 +21,10 @@ class UserManager extends Database
 
     public function createUser(User $user)
     {
-        $req = $this->_db->prepare('INSERT INTO users(username, userpass, dateSignin, groupId, mail) VALUES (:username, :userpass, NOW(), :groupId, :mail)');
+        $req = $this->_db->prepare('INSERT INTO users(username, userpass, dateSignin, mail) VALUES (:username, :userpass, NOW(), :mail)');
 
         $req->bindValue(':username' , $user->getUsername());
         $req->bindValue(':userpass' , $user->getUserpass());
-        $req->bindValue(':groupId' , $user->getGroupId());
         $req->bindValue(':mail' , $user->getMail());
 
         return $req->execute();

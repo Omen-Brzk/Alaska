@@ -22,7 +22,6 @@
                     <p><?= $post->getId();?></p>
                     <p><a href="index.php?action=showPost&id=<?= $post->getId(); ?>">Lien de l'article</a></p>
                 </article>
-
                 <?php
                 if($count == $maxPosts) break;
             }

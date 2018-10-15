@@ -16,18 +16,11 @@ $title = $post->getTitle();
 
 <div class="jumbotron">
     <h5>Commentaires</h5>
-
-<?php
-    foreach($comments as $comment)
-    { ?>
-        <h6 class=""><?= $comment->getAuthor();?>  le   <?= $comment->getCommentDate(); ?> </h6>
-        <p class=""><?= $comment->getCommentText() ?></p>
-
-<?php
-    }
-
-
-?>
+    <form method="post">
+        <textarea id="tinymce-editor">Ecrivez votre commentaire ici !</textarea>
+        <input type="submit" name="submit" value="Publier">
+    </form>
+    <?php include('comments.php'); ?>
 </div>
 <a href="index.php">Retour à l'accueil</a>
 <?php  $content = ob_get_clean();

@@ -11,6 +11,7 @@ require_once ('tools.php');
 require('controller/postController.php');
 require('controller/commentController.php');
 require('controller/userController.php');
+require('controller/adminController.php');
 
 session_start();
 

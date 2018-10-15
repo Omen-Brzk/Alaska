@@ -22,7 +22,20 @@
 
     <!-- BOOTSRAP -->
     <script src="public/inc/js/bootsrap/bootstrap.min.js"></script>
+    <script src="public/inc/js/bootsrap/bootstrap.bundle.js"></script>
     <link href="public/inc/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+    <!-- TINY MCE -->
+    <script src="public/inc/js/tinymce/tinymce.min.js"></script>
+    <script>tinymce.init({
+            selector: '#tinymce-editor',
+            language : 'fr_FR'
+        });
+    </script>
+    <script>$(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
 </head>
 
 <?php

@@ -24,26 +24,23 @@ class CommentManager extends Database
 
     public function createComment(Comment $comment)
     {
-        $req = $this->_db->prepare('INSERT INTO comments(postId, author, commentText, commentDate, reports) VALUES (:postId, :author, :commentText, :commentDate, :reports)');
+        $req = $this->_db->prepare('INSERT INTO comments(postId, authorId, commentText, commentDate) VALUES (:postId, :authorId, :commentText, NOW())');
 
-        $req->bindValue(':postId' , $comment->getPostId());
-        $req->bindValue(':author' , $comment->getAuthor());
-        $req->bindValue(':commentText' , $comment->getCommentText());
-        $req->bindValue(':commentDate' , $comment->getCommentDate());
-        $req->bindValue(':reports' , $comment->getReports());
+        $req->bindValue(':postId' , htmlspecialchars($comment->getPostId()));
+        $req->bindValue(':authorId' , htmlspecialchars($comment->getAuthorId()));
+        $req->bindValue(':commentText' , htmlspecialchars($comment->getCommentText()));
 
-        return $req->execute();
+        $req->execute();
     }
 
     public function updateComment(Comment $comment)
     {
-        $req = $this->_db->prepare('UPDATE comments SET  postId = :postId, author = :author, commentText = :commentText, reports = :reports WHERE id = ' . $comment->getId());
+        $req = $this->_db->prepare('UPDATE comments SET  postId = :postId, authorId = :authorId, commentText = :commentText, reports = :reports WHERE id = ' . $comment->getId());
 
-        $req->bindValue(':postId' , $comment->getPostId());
-        $req->bindValue(':author' , $comment->getAuthor());
-        $req->bindValue(':commentText' , $comment->getCommentText());
-        $req->bindValue(':commentDate' , $comment, new DateTime());
-        $req->bindValue(':reports' , $comment->getReports());
+        $req->bindValue(':postId' , htmlspecialchars($comment->getPostId()));
+        $req->bindValue(':authorId' , htmlspecialchars($comment->getAuthorId()));
+        $req->bindValue(':commentText' , htmlspecialchars($comment->getCommentText()));
+        $req->bindValue(':reports' , htmlspecialchars($comment->getReports()));
 
         return $req->execute();
     }
@@ -56,11 +53,11 @@ class CommentManager extends Database
     public function getCommentById($commentId)
     {
         $req = $this->_db->prepare('SELECT * FROM comments WHERE id = :commentId');
-        $req->bindValue(':commentId' , (int)$commentId);
+        $req->bindValue(':commentId' , htmlspecialchars((int)$commentId));
 
         $req->execute();
 
-        $data = $req->fetch();
+        $data = $req->fetch(PDO::FETCH_ASSOC);
 
         if (is_array($data))
         {
@@ -68,12 +65,13 @@ class CommentManager extends Database
         }
     }
 
+    // SELECT *, DATE_FORMAT(commentDate, 'Posté le %d/%m/%y à %H:%i:%s') AS 'commentDateFr' FROM comments WHERE postId = 1 ORDER BY commentDate DESC
     public function getAllCommentByPostId($postId)
     {
         $commentsList = [];
 
-        $req = $this->_db->prepare('SELECT * FROM comments WHERE postId = :postId');
-        $req->bindValue(':postId' , (int)$postId);
+        $req = $this->_db->prepare('SELECT *, DATE_FORMAT(commentDate, "Posté le %d/%m/%y à %H:%i:%s") AS commentDate FROM comments WHERE postId = :postId ORDER BY commentDate DESC');
+        $req->bindValue(':postId' , htmlspecialchars((int)$postId));
 
         $req->execute();
 

@@ -21,7 +21,33 @@ if(isset($_GET['action']))
 {
     if($_GET['action'] == 'showPost' && isset($_GET['id']) && $_GET['id'] > 0)
     {
-        showPostById($_GET['id']);
+        if(isset($_POST['submit']) && isset($_SESSION['user']))
+        {
+            addComment($_POST);
+        }
+        else
+        {
+            showPostById($_GET['id']);
+        }
+
+    }
+
+    elseif($_GET['action'] == 'commentEdit' && isset($_GET['commentId']))
+    {
+        if(isset($_POST['submit']))
+        {
+            sendCommentEdit($_POST);
+        }
+        else
+        {
+            showCommentEdit($_GET['commentId']);
+        }
+
+    }
+
+    elseif($_GET['action'] == 'reportComment' && isset($_GET['commentId']))
+    {
+        reportComment($_GET['commentId']);
     }
 
     elseif ($_GET['action'] == 'register' && !isset($_SESSION['user']))

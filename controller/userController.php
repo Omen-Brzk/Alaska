@@ -133,8 +133,6 @@ function showUserAccount($user)
     {
         admin_showPanel();
     }
-
-
 }
 
 function sendUserLogin($datas)

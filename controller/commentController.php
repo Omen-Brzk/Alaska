@@ -10,10 +10,128 @@ require_once ('model/CommentManager.php');
 require_once ('model/PostManager.php');
 require_once('model/UserManager.php');
 
-function ShowCommentEdit($commentId)
+function showCommentEdit($commentId)
+{
+    $title = 'Modifier le commentaire';
+    $commentManager = new CommentManager();
+    $comment = $commentManager->getCommentById($commentId);
+
+    if(!isset($_SESSION['user']))
+    {
+        $error = 'Vous devez être connecté pour accéder à cette page !';
+        return require('view/frontend/404.php');
+    }
+
+    if(is_null($comment))
+    {
+        $error = 'Impossible de trouver le commentaire';
+        return require('view/frontend/404.php');
+    }
+
+    if($_SESSION['user']->getId() != $comment->getAuthorId())
+    {
+        $error = 'Vous n\'êtes pas autorisé à modifier ce commentaire';
+        return require('view/frontend/404.php');
+    }
+
+    require('view/frontend/comment-edit.php');
+}
+
+function sendCommentEdit($datas)
 {
     $commentManager = new CommentManager();
-    $commentAdd = $commentManager->getCommentById($commentId);
+    $comment = $commentManager->getCommentById($datas['commentId']);
 
+    if(!isset($_SESSION['user']))
+    {
+        $error = 'Vous devez être connecté pour accéder à cette page !';
+        return require('view/frontend/404.php');
+    }
+
+    if(is_null($comment))
+    {
+        $error = 'Impossible de trouver le commentaire';
+        return require('view/frontend/404.php');
+    }
+
+    if($_SESSION['user']->getId() != $comment->getAuthorId())
+    {
+        $error = 'Vous n\'êtes pas autorisé à modifier ce commentaire';
+        return require('view/frontend/404.php');
+    }
+
+    if($datas['commentText'] != "")
+    {
+        if($datas['commentText'] != $comment->getCommentText())
+        {
+            $comment->setCommentText($datas['commentText']);
+            $commentManager->updateComment($comment);
+        }
+    }
+    else
+    {
+        $message = 'Veuillez rentrer un commentaire';
+        return require('view/frontend/comment-edit.php');
+    }
+
+
+    $postManager = new PostManager();
+    $post = $postManager->getPostById($comment->getPostId());
+
+    $comments = $commentManager->getAllCommentByPostId($comment->getPostId());
+
+    $userManager = new UserManager();
+
+    require('view/frontend/post.php');
+}
+
+function addComment($datas)
+{
+    $commentManager = new CommentManager();
+
+    if(!empty($datas['commentText']))
+    {
+        $commentArray = array(
+            'postId' => $datas['postId'],
+            'authorId' => $_SESSION['user']->getId(),
+            'CommentText' => $datas['commentText']
+        );
+
+        $comment = new Comment($commentArray);
+        $commentManager->createComment($comment);
+    }
+    else
+    {
+        $message = 'Vous devez écrire un commentaire';
+    }
+
+    $postManager = new PostManager();
+    $post = $postManager->getPostById($datas['postId']);
+
+    $comments = $commentManager->getAllCommentByPostId($datas['postId']);
+
+    $userManager = new UserManager();
+
+    require('view/frontend/post.php');
+
+}
+
+function reportComment($commentId)
+{
+    $commentManager = new CommentManager();
+    $comment = $commentManager->getCommentById($commentId);
+
+    $comment->setReports(1);
+
+    $commentManager->updateComment($comment);
+
+    $postManager = new PostManager();
+    $post = $postManager->getPostById($comment->getPostId());
+
+    $comments = $commentManager->getAllCommentByPostId($comment->getPostId());
+
+    $userManager = new UserManager();
+
+    require('view/frontend/post.php');
 }
 

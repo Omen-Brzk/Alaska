@@ -10,7 +10,7 @@ class Comment
 {
     private $_id;
     private $_postId;
-    private $_author;
+    private $_authorId;
     private $_commentText;
     private $_commentDate;
     private $_reports;
@@ -62,9 +62,9 @@ class Comment
     /**
      * @return mixed
      */
-    public function getAuthor()
+    public function getAuthorId()
     {
-        return $this->_author;
+        return $this->_authorId;
     }
 
     /**
@@ -124,11 +124,11 @@ class Comment
     /**
      * @param $author
      */
-    public function setAuthor($author)
+    public function setAuthorId($authorId)
     {
-        if (is_string($author))
+        if (is_numeric($authorId) && $authorId > 0)
         {
-            $this->_author = $author;
+            $this->_authorId = $authorId;
         }
     }
 

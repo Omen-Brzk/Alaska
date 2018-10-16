@@ -30,6 +30,8 @@ function showPostById($postId)
     $commentManager = new CommentManager();
     $comments = $commentManager->getAllCommentByPostId($postId);
 
+    $userManager = new UserManager();
+
     require('view/frontend/post.php');
 }
 

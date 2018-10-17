@@ -104,4 +104,19 @@ class CommentManager extends Database
         $req->closeCursor();
         return $commentsList;
     }
+
+    public function getAllReportComment()
+    {
+        $commentsList = [];
+
+        $req = $this->_db->query('SELECT * FROM comments WHERE reports > 0');
+
+        while ($comment = $req->fetch(PDO::FETCH_ASSOC))
+        {
+            array_push($commentsList, new Comment($comment));
+        }
+
+        $req->closeCursor();
+        return $commentsList;
+    }
 }

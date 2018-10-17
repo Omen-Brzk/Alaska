@@ -50,6 +50,7 @@ function sendCommentEdit($datas)
 
     if(is_null($comment))
     {
+        $title = 'Erreur 404';
         $error = 'Impossible de trouver le commentaire';
         return require('view/frontend/404.php');
     }
@@ -66,6 +67,12 @@ function sendCommentEdit($datas)
         {
             $comment->setCommentText($datas['commentText']);
             $commentManager->updateComment($comment);
+            $message = '<div class="alert alert-success alert-dismissible fade show" role="alert">
+              <strong>Votre commentaire a bien été modifié !</strong>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>';
         }
     }
     else
@@ -125,13 +132,8 @@ function reportComment($commentId)
 
     $commentManager->updateComment($comment);
 
-    $postManager = new PostManager();
-    $post = $postManager->getPostById($comment->getPostId());
-
-    $comments = $commentManager->getAllCommentByPostId($comment->getPostId());
-
-    $userManager = new UserManager();
-
-    require('view/frontend/post.php');
+    header('Location:index.php?action=showPost&id=' . $comment->getPostId());
 }
+
+
 

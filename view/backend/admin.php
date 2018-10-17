@@ -43,14 +43,14 @@
                 elseif($user->getGroupId() == User::IS_AUTHOR) { ?>
                 <span class="badge badge-pill badge-danger">Auteur</span>
                 <?php }   ?></td>
-            <td><button data-toggle="tooltip" data-placement="right" title="Editer l'utilisateur" type="button" class="btn btn-outline-light btn-sm"><a href="">Editer l'utilisateur</a></button></td>
+            <td><button type="button" class="btn btn-outline-light btn-sm"><a href="">Editer l'utilisateur</a></button></td>
         </tr>
     <?php } ?>
         </tbody>
     </table>
 
     <p class="lead">
-        Liste des commentaires postés
+        Liste des commentaires signalés
     </p>
     <table class="table table-dark table-striped table-hover table-sm">
     <thead>
@@ -79,12 +79,20 @@
                         <td><?= $comment->getReports() ?></td>
                 <?php } ?>
                 <td><a href="">Editer le commentaire</a></td>
+                <td><a href="">Supprimer le commentaire</a></td>
+                <?php if($comment->getReports() > 0) { ?>
+                    <td>
+                        <button type="button" class="btn btn-outline-danger btn-sm">
+                        <a class="btn-admin" href="index.php?action=unReportComment&commentId=<?= $comment->getId() ?>">Retirer le signalement</a>
+                        </button>
+                    </td>
+                <?php } ?>
             </tr>
         <?php }
     }
     else { ?>
         <tr>
-            <td class="bg-danger text-center" colspan="6">Aucun commentaire n'a été posté.</td>
+            <td class="bg-danger text-center" colspan="6">Aucun commentaire n'a été signalé.</td>
         </tr>
     <?php }?>
     </tbody>

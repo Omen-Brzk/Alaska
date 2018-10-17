@@ -50,6 +50,18 @@ if(isset($_GET['action']))
         reportComment($_GET['commentId']);
     }
 
+    elseif($_GET['action'] == 'unReportComment' && isset($_GET['commentId']))
+    {
+        if(isset($_SESSION['user']) && $_SESSION['user']->getId() > 1)
+        {
+            unReportComment($_GET['commentId']);
+        }
+        else
+        {
+            showAllPost();
+        }
+    }
+
     elseif ($_GET['action'] == 'register' && !isset($_SESSION['user']))
     {
         if(isset($_POST['submit']))

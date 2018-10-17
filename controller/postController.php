@@ -32,6 +32,12 @@ function showPostById($postId)
 
     $userManager = new UserManager();
 
+    if(is_null($post))
+    {
+        $error = 'L\' article demandé n\'existe pas.';
+        return require('view/frontend/404.php');
+    }
+
     require('view/frontend/post.php');
 }
 

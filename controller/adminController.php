@@ -12,10 +12,23 @@ function admin_showPanel()
     $userList = $userManager->getAllUser();
 
     $commentManager = new CommentManager();
-    $commentList = $commentManager->getAllComment();
+    $commentList = $commentManager->getAllReportComment();
 
     $title = "Administration";
 
     require('view/backend/admin.php');
 }
 
+function unReportComment($commentId)
+{
+    $title = "Administration";
+
+    $commentManager = new CommentManager();
+    $comment = $commentManager->getCommentById($commentId);
+
+    $comment->setReports(0);
+
+    $commentManager->updateComment($comment);
+
+    header('Location:index.php?action=showAccount');
+}

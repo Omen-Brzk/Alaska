@@ -11,11 +11,13 @@ class Post
     private $_id ;
     private $_title;
     private $_content;
+    private $_postRecap;
     private $_creationDate;
 
     /**
      * Post constructor.
      * @param array $datas
+     * @throws Exception
      */
     public function __construct(array $datas)
     {
@@ -23,8 +25,8 @@ class Post
     }
 
     /**
-     * Hydrate function
      * @param array $datas
+     * @throws Exception
      */
     public function hydrate(array  $datas)
     {
@@ -65,6 +67,14 @@ class Post
     public function getContent()
     {
         return $this->_content;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPostRecap()
+    {
+        return $this->_postRecap;
     }
 
     /**
@@ -111,6 +121,17 @@ class Post
         if (is_string($content))
         {
             $this->_content = $content;
+        }
+    }
+
+    /**
+     * @param $recap
+     */
+    public function setPostRecap($recap)
+    {
+        if(is_string($recap) && strlen($recap) <= 255)
+        {
+            $this->_postRecap = $recap;
         }
     }
 

@@ -12,7 +12,7 @@ $title = $post->getTitle();
 
 <h1 class="badge-success"><?= $title ?></h1>
 <p class="jumbotron"><?= $post->getContent() ?></p>
-<p class="alert-dark">Article crée le : <?= $post->getCreationDate() ?> par Jean-Forteroche</p>
+<p class="alert-dark"><?= $post->getCreationDate() ?> par <span class="badge badge-pill badge-danger">Auteur</span> Jean-Forteroche</p>
 
 <?php if (isset($_SESSION['user'])) { ?>
 <div class="jumbotron">

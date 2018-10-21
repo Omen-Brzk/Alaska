@@ -26,9 +26,9 @@ class PostManager extends Database
     {
         $req = $this->_db->prepare('INSERT INTO posts(title, content, creationDate) VALUES (:title, :content, :creationDate)');
 
-        $req->bindValue(':title', $post->getTitle());
-        $req->bindValue(':content', $post->getContent());
-        $req->bindValue(':creationDate', $post->getCreationDate());
+        $req->bindValue(':title', htmlspecialchars($post->getTitle()));
+        $req->bindValue(':content', htmlspecialchars($post->getContent()));
+        $req->bindValue(':creationDate', htmlspecialchars($post->getCreationDate()));
 
         return $req->execute();
     }
@@ -37,8 +37,8 @@ class PostManager extends Database
     {
         $req = $this->_db->prepare('UPDATE posts SET title = :title, content = :content, creationDate = :creationDate WHERE id = ' . $post->getId());
 
-        $req->bindValue(':title', $post->getTitle());
-        $req->bindValue(':content', $post->getContent());
+        $req->bindValue(':title', htmlspecialchars($post->getTitle()));
+        $req->bindValue(':content', htmlspecialchars($post->getContent()));
         $req->bindValue(':creationDate', new DateTime());
 
         return $req->execute();
@@ -51,7 +51,7 @@ class PostManager extends Database
 
     public function getPostById($id)
     {
-        $req = $this->_db->prepare('SELECT * FROM posts WHERE id = :id');
+        $req = $this->_db->prepare('SELECT *, DATE_FORMAT(creationDate, "Posté le %d/%m/%y à %H:%i:%s") AS creationDate FROM posts WHERE id = :id');
         $req->bindValue(':id', (int)$id);
 
         $req->execute();
@@ -67,7 +67,7 @@ class PostManager extends Database
     public function getAllPost()
     {
         $postsList = [];
-        $req = $this->_db->query('SELECT * FROM posts');
+        $req = $this->_db->query('SELECT *, DATE_FORMAT(creationDate, "Posté le %d/%m/%y à %H:%i:%s") AS creationDate FROM posts');
 
         while($post = $req->fetch(PDO::FETCH_ASSOC))
         {

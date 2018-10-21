@@ -32,6 +32,11 @@ if(isset($_GET['action']))
 
     }
 
+    elseif($_GET['action'] == 'deletePost' && isset($_GET['id']) && $_GET['id'] > 0)
+    {
+        deletePost($_GET['id']);
+    }
+
     elseif($_GET['action'] == 'commentEdit' && isset($_GET['commentId']))
     {
         if(isset($_POST['submit']))

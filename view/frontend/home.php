@@ -17,7 +17,7 @@
 
                 <article  id="<?= $post->getId(); ?>">
                         <h1 id=""><?= $post->getTitle(); ?></h1>
-                    <p><?= $post->getContent(); ?></p>
+                    <p><?= $post->getPostRecap(); ?></p>
                     <p><?= $post->getCreationDate(); ?></p>
                     <p><?= $post->getId();?></p>
                     <p><a href="index.php?action=showPost&id=<?= $post->getId(); ?>">Lien de l'article</a></p>
@@ -25,6 +25,9 @@
                 <?php
                 if($count == $maxPosts) break;
             }
+        }
+        else {
+            echo 'Aucun article';
         }
         ?>
     </section>

@@ -37,6 +37,11 @@ if(isset($_GET['action']))
         deletePost($_GET['id']);
     }
 
+    elseif ($_GET['action'] == 'createPost' && isset($_SESSION['user']) && $_SESSION['user']->getGroupId() == User::IS_AUTHOR)
+    {
+        createPost($_POST);
+    }
+
     elseif($_GET['action'] == 'commentEdit' && isset($_GET['commentId']))
     {
         if(isset($_POST['submit']))

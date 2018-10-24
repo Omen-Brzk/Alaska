@@ -6,6 +6,10 @@
  * Time: 16:27
  */
 
+require_once ('model/CommentManager.php');
+require_once ('model/PostManager.php');
+require_once('model/UserManager.php');
+
 function admin_showPanel()
 {
     $userManager = new UserManager();
@@ -52,5 +56,21 @@ function deletePost($postId)
 
 function createPost($datas)
 {
-    //TODO
+    $title = 'Creation d\'article';
+    $postManager = new PostManager();
+
+    if(!empty($datas['content']) && !empty($datas['postRecap']) && !empty($datas['title']))
+    {
+        $postArray = array(
+            'title' => $datas['title'],
+            'postRecap' => $datas['postRecap'],
+            'content' => $datas['content'],
+
+        );
+
+        $post = new Post($postArray);
+        $postManager->createPost($post);
+    }
+
+    require('view/backend/post-add.php');
 }

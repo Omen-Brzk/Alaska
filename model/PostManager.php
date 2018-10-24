@@ -24,11 +24,11 @@ class PostManager extends Database
 
     public function createPost(Post $post)
     {
-        $req = $this->_db->prepare('INSERT INTO posts(title, content, creationDate) VALUES (:title, :content, :creationDate)');
+        $req = $this->_db->prepare('INSERT INTO posts(title, postRecap, content, creationDate) VALUES (:title, :postRecap, :content, NOW())');
 
         $req->bindValue(':title', htmlspecialchars($post->getTitle()));
+        $req->bindValue(':postRecap', htmlspecialchars($post->getPostRecap()));
         $req->bindValue(':content', htmlspecialchars($post->getContent()));
-        $req->bindValue(':creationDate', htmlspecialchars($post->getCreationDate()));
 
         return $req->execute();
     }
@@ -39,7 +39,7 @@ class PostManager extends Database
 
         $req->bindValue(':title', htmlspecialchars($post->getTitle()));
         $req->bindValue(':content', htmlspecialchars($post->getContent()));
-        $req->bindValue(':creationDate', new DateTime());
+        $req->bindValue(':creationDate', htmlspecialchars($post->getCreationDate()));
 
         return $req->execute();
     }

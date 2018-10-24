@@ -10,7 +10,6 @@
 
 <?php ob_start() ?>
 
-
 <div class="container">
 
 <div>
@@ -18,15 +17,16 @@
 </div>
 
     <form method="post">
-        <label for="postRecap">Titre de l'article</label> <input type="text" name="title">
-        <label for="postRecap">Resumé de l'article</label> <input type="text" name="postRecap">
+        <label for="postRecap">Titre de l'article</label> <input type="text" name="title" value="<?= isset($post) ? $post->getTitle() : '' ?>">
+        <label for="postRecap">Resumé de l'article</label> <input type="text" name="postRecap" value="<?= isset($post) ? $post->getPostRecap() : '' ?>">
         <hr>
-        <textarea id="tinymce-editor" name="content"></textarea>
+        <textarea id="tinymce-editor" name="content"><?= isset($post) ? $post->getContent() : '' ?></textarea>
         <input type="submit" value="Valider">
     </form>
 
 </div>
 
+<?= isset($message) ? $message : '' ?>
 
 
 

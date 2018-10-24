@@ -53,9 +53,7 @@ function createPost($datas)
     $title = 'Creation d\'article';
     $postManager = new PostManager();
 
-    /**
-     * TODO REGEX SCRIPT XSS
-     */
+
     if(!empty($datas['content']) && !empty($datas['postRecap']) && !empty($datas['title']))
     {
         $postArray = array(
@@ -66,6 +64,14 @@ function createPost($datas)
         );
 
         $post = new Post($postArray);
+
+        if(preg_match('/(<script>)/', $datas['title']) || preg_match('/(<script>)/', $datas['postRecap']) || preg_match('/(<script>)/', $datas['content']))
+        {
+            $message = 'L\'insertion de script n\'est pas autorisée, pour plus d\'information, consultez le développeur';
+
+            return require('view/backend/post-add.php');
+        }
+
         $postManager->createPost($post);
 
         $userManager = new UserManager();

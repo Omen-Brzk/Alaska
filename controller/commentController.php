@@ -49,7 +49,7 @@ function sendCommentEdit($datas)
         return showError404('Impossible de trouver le commentaire');
     }
 
-    if($_SESSION['user']->getId() != $comment->getAuthorId())
+    if($_SESSION['user']->getId() <= 1)
     {
         return showError404('Vous n\'êtes pas autorisé à modifier ce commentaire');
     }

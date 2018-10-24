@@ -32,11 +32,6 @@ if(isset($_GET['action']))
 
     }
 
-    elseif($_GET['action'] == 'deletePost' && isset($_GET['id']) && $_GET['id'] > 0)
-    {
-        deletePost($_GET['id']);
-    }
-
     elseif ($_GET['action'] == 'createPost' && isset($_SESSION['user']) && $_SESSION['user']->getGroupId() == User::IS_AUTHOR)
     {
         createPost($_POST);
@@ -53,6 +48,28 @@ if(isset($_GET['action']))
             showPostEdit($_GET['id']);
         }
 
+    }
+
+    elseif($_GET['action'] == 'deletePost' && isset($_GET['id']) && $_GET['id'] > 0)
+    {
+        deletePost($_GET['id']);
+    }
+
+    elseif($_GET['action'] == 'editUserComment' && isset($_GET['id']) && $_GET['id'] > 0)
+    {
+        if (isset($_POST['submit']))
+        {
+            sendUserEditComment($_POST);
+        }
+        else
+        {
+            editUserComment($_GET['id']);
+        }
+    }
+
+    elseif($_GET['action'] == 'deleteUserComment' && isset($_GET['id']) && $_GET['id'] > 0)
+    {
+        deleteUserComment($_GET['id']);
     }
 
     elseif($_GET['action'] == 'commentEdit' && isset($_GET['commentId']))

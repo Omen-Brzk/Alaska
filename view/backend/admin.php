@@ -85,11 +85,16 @@
                 <?php } else { ?>
                         <td><?= $comment->getReports() ?></td>
                 <?php } ?>
-                <td><a href="">Editer le commentaire</a></td>
-                <td><a href="">Supprimer le commentaire</a></td>
+                <td><button class="btn btn-outline-info btn-sm">
+                        <a href="index.php?action=editUserComment&id=<?= $comment->getId()?>">Editer le commentaire</a>
+                    </button>
+                </td>
+                <td><button class="btn btn-outline-danger btn-sm">
+                        <a href="index.php?action=deleteUserComment&id=<?= $comment->getId()?>">Supprimer le commentaire</a>
+                    </button></td>
                 <?php if($comment->getReports() > 0) { ?>
                     <td>
-                        <button type="button" class="btn btn-outline-danger btn-sm">
+                        <button type="button" class="btn btn-outline-warning btn-sm">
                         <a class="btn-admin" href="index.php?action=unReportComment&commentId=<?= $comment->getId() ?>">Retirer le signalement</a>
                         </button>
                     </td>

@@ -44,6 +44,79 @@ function unReportComment($commentId)
     header('Location:index.php?action=showAccount');
 }
 
+function editUserComment($commentId)
+{
+    $title = 'Modifier le commentaire';
+    $commentManager = new CommentManager();
+    $comment = $commentManager->getCommentById($commentId);
+
+    require('view/frontend/comment-edit.php');
+}
+
+function sendUserEditComment($datas)
+{
+    $commentManager = new CommentManager();
+    $comment = $commentManager->getCommentById($datas['commentId']);
+
+    if($datas['commentText'] != "")
+    {
+        if($datas['commentText'] != $comment->getCommentText())
+        {
+            $comment->setCommentText($datas['commentText']);
+            $commentManager->updateComment($comment);
+            $message = '<div class="alert alert-success alert-dismissible fade show" role="alert">
+              <strong>Le commentaire a bien été modifié !</strong>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>';
+
+            $userManager = new UserManager();
+            $userList = $userManager->getAllUser();
+
+            $commentManager = new CommentManager();
+            $commentList = $commentManager->getAllReportComment();
+
+            $postManager = new PostManager();
+            $postList = $postManager->getAllPost();
+
+            $title = "Administration";
+
+            return require ('view/backend/admin.php');
+        }
+        else
+        {
+            admin_showPanel();
+        }
+    }
+    else
+    {
+        $message = 'Veuillez rentrer un commentaire';
+        return require('view/frontend/comment-edit.php');
+    }
+}
+
+function deleteUserComment($commentId)
+{
+    $commentManager = new CommentManager();
+    $comment = $commentManager->getCommentById($commentId);
+
+    $commentManager->deleteComment($comment);
+
+    $userManager = new UserManager();
+    $userList = $userManager->getAllUser();
+
+    $commentManager = new CommentManager();
+    $commentList = $commentManager->getAllReportComment();
+
+    $postManager = new PostManager();
+    $postList = $postManager->getAllPost();
+
+    $title = "Administration";
+
+    header('Location:index.php?action=showAccount');
+}
+
 /**
  * AUTHOR FUNCTIONS
  */

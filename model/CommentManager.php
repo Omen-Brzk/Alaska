@@ -35,7 +35,7 @@ class CommentManager extends Database
 
     public function updateComment(Comment $comment)
     {
-        $req = $this->_db->prepare('UPDATE comments SET  postId = :postId, authorId = :authorId, commentText = :commentText, reports = :reports WHERE id = ' . $comment->getId());
+        $req = $this->_db->prepare('UPDATE comments SET postId = :postId, authorId = :authorId, commentText = :commentText, reports = :reports WHERE id = ' . $comment->getId());
 
         $req->bindValue(':postId' , htmlspecialchars($comment->getPostId()));
         $req->bindValue(':authorId' , htmlspecialchars($comment->getAuthorId()));

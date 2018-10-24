@@ -18,20 +18,17 @@ function showCommentEdit($commentId)
 
     if(!isset($_SESSION['user']))
     {
-        $error = 'Vous devez être connecté pour accéder à cette page !';
-        return require('view/frontend/404.php');
+        return showError404('Vous devez être connecté pour accéder à cette page !');
     }
 
     if(is_null($comment))
     {
-        $error = 'Impossible de trouver le commentaire';
-        return require('view/frontend/404.php');
+        return showError404('Impossible de trouver le commentaire');
     }
 
     if($_SESSION['user']->getId() != $comment->getAuthorId())
     {
-        $error = 'Vous n\'êtes pas autorisé à modifier ce commentaire';
-        return require('view/frontend/404.php');
+        return showError404('Vous n\'êtes pas autorisé à modifier ce commentaire');
     }
 
     require('view/frontend/comment-edit.php');
@@ -44,21 +41,17 @@ function sendCommentEdit($datas)
 
     if(!isset($_SESSION['user']))
     {
-        $error = 'Vous devez être connecté pour accéder à cette page !';
-        return require('view/frontend/404.php');
+        return showError404('Vous devez être connecté pour accéder à cette page !');
     }
 
     if(is_null($comment))
     {
-        $title = 'Erreur 404';
-        $error = 'Impossible de trouver le commentaire';
-        return require('view/frontend/404.php');
+        return showError404('Impossible de trouver le commentaire');
     }
 
     if($_SESSION['user']->getId() != $comment->getAuthorId())
     {
-        $error = 'Vous n\'êtes pas autorisé à modifier ce commentaire';
-        return require('view/frontend/404.php');
+        return showError404('Vous n\'êtes pas autorisé à modifier ce commentaire');
     }
 
     if($datas['commentText'] != "")

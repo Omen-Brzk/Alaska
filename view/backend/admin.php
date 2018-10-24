@@ -10,11 +10,12 @@
 
 <?php ob_start() ?>
 
+<?= isset($message) ? $message : '' ?>
+
 <?php if (isset($_SESSION['user']) && $_SESSION['user']->getGroupId() == User::IS_AUTHOR)
 {
     require('view/backend/author-panel.php');
 } ?>
-
 
 <?php if (isset($_SESSION['user']) && $_SESSION['user']->getGroupId() > 1)
 { ?>

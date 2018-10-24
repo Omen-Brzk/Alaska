@@ -42,6 +42,19 @@ if(isset($_GET['action']))
         createPost($_POST);
     }
 
+    elseif ($_GET['action'] == 'editPost' && isset($_SESSION['user']) && $_SESSION['user']->getGroupId() == User::IS_AUTHOR)
+    {
+        if(isset($_POST['submit']))
+        {
+            sendPostEdit($_POST);
+        }
+        else
+        {
+            showPostEdit($_GET['id']);
+        }
+
+    }
+
     elseif($_GET['action'] == 'commentEdit' && isset($_GET['commentId']))
     {
         if(isset($_POST['submit']))
@@ -86,10 +99,8 @@ if(isset($_GET['action']))
 
     elseif($_GET['action'] == 'showAccount')
     {
-        if(isset($_SESSION['user']))
-        {
-            showUserAccount($_SESSION['user']);
-        }
+
+        showUserAccount($_SESSION['user']);
     }
 
     elseif($_GET['action'] == 'login')
@@ -107,6 +118,11 @@ if(isset($_GET['action']))
     elseif($_GET['action'] == 'disconnect')
     {
         userDisconnect();
+    }
+
+    else
+    {
+        showError404("Page introuvable");
     }
 }
 else

@@ -34,8 +34,7 @@ function showPostById($postId)
 
     if(is_null($post))
     {
-        $error = 'L\' article demandé n\'existe pas.';
-        return require('view/frontend/404.php');
+        return showError404('L\' article demandé n\'existe pas.');
     }
 
     require('view/frontend/post.php');

@@ -190,3 +190,9 @@ function showUserLogin()
     $title = "Connexion";
     require('view/frontend/login.php');
 }
+
+function showError404($errorText)
+{
+    $error = $errorText;
+    require('view/frontend/404.php');
+}

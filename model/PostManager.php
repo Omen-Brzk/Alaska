@@ -28,25 +28,26 @@ class PostManager extends Database
 
         $req->bindValue(':title', htmlspecialchars($post->getTitle()));
         $req->bindValue(':postRecap', htmlspecialchars($post->getPostRecap()));
-        $req->bindValue(':content', htmlspecialchars($post->getContent()));
+        $req->bindValue(':content', $post->getContent());
 
         return $req->execute();
     }
 
-    public function  updatePost(Post $post)
+    public function updatePost(Post $post)
     {
-        $req = $this->_db->prepare('UPDATE posts SET title = :title, content = :content, creationDate = :creationDate WHERE id = ' . $post->getId());
+        $req = $this->_db->prepare('UPDATE posts SET title = :title, postRecap = :postRecap, content = :content WHERE id = ' . $post->getId());
 
         $req->bindValue(':title', htmlspecialchars($post->getTitle()));
-        $req->bindValue(':content', htmlspecialchars($post->getContent()));
-        $req->bindValue(':creationDate', htmlspecialchars($post->getCreationDate()));
+        $req->bindValue(':postRecap', htmlspecialchars($post->getPostRecap()));
+        $req->bindValue(':content', $post->getContent());
 
-        return $req->execute();
+        $req->execute();
     }
 
     public function deletePost(Post $post)
     {
-        return $req = $this->_db->exec('DELETE FROM posts WHERE id = ' . $post->getId());
+        $this->_db->query('DELETE FROM posts WHERE id = ' . $post->getId());
+        return $this->_db->query('DELETE FROM comments WHERE postId = ' . $post->getId());
     }
 
     public function getPostById($id)

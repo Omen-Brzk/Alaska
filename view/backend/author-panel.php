@@ -26,7 +26,7 @@
             <tr>
                     <td class="text-center" colspan="6">
                         <button type="button" class="btn btn-outline-light btn-sm">
-                            <a class="btn-admin" href="index.php?action=createPost">Créer un article</a>
+                            <a href="index.php?action=createPost">Créer un article</a>
                         </button>
                     </td>
                 </tr>

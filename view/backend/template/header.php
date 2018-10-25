@@ -28,7 +28,7 @@
     <script src="public/inc/js/bootsrap/bootstrap.bundle.js"></script>
     <link href="public/inc/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 
-    <!-- FONTAWESOME -->
+    <!-- FONT AWESOME -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
 
     <!-- TINY MCE -->

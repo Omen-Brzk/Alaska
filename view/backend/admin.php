@@ -6,6 +6,9 @@
  * Time: 16:37
  */
 
+/**
+ * TODO CORRECT BUTTON COLORS CSS
+ */
 ?>
 
 <?php ob_start() ?>
@@ -52,7 +55,7 @@
                 <?php }   ?></td>
             <td>
                 <button type="button" class="btn btn-outline-info btn-sm">
-                    <a href="index.php?action=editUser&id=<?= $user->getId()?>">Editer l'utilisateur</a>
+                    <a class="btn-admin" href="index.php?action=editUser&id=<?= $user->getId()?>">Editer l'utilisateur</a>
                 </button>
             </td>
             <td>
@@ -69,7 +72,7 @@
             </td>
             <td>
                 <button type="button" class="btn btn-outline-danger btn-sm">
-                    <a href="index.php?action=deleteUser&id=<?= $user->getId()?>">Supprimer l'utilisateur</a>
+                    <a class="btn-admin" href="index.php?action=deleteUser&id=<?= $user->getId()?>">Supprimer l'utilisateur</a>
                 </button>
             </td>
         </tr>
@@ -107,11 +110,11 @@
                         <td><?= $comment->getReports() ?></td>
                 <?php } ?>
                 <td><button class="btn btn-outline-info btn-sm">
-                        <a href="index.php?action=editUserComment&id=<?= $comment->getId()?>">Editer le commentaire</a>
+                        <a class="btn-admin" href="index.php?action=editUserComment&id=<?= $comment->getId()?>">Editer le commentaire</a>
                     </button>
                 </td>
                 <td><button class="btn btn-outline-danger btn-sm">
-                        <a href="index.php?action=deleteUserComment&id=<?= $comment->getId()?>">Supprimer le commentaire</a>
+                        <a class="btn-admin" href="index.php?action=deleteUserComment&id=<?= $comment->getId()?>">Supprimer le commentaire</a>
                     </button></td>
                 <?php if($comment->getReports() > 0) { ?>
                     <td>

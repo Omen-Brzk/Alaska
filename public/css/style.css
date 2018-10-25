@@ -2,24 +2,36 @@
 Admin Panel
  */
 
-a.btn-admin {
-    color: #ffffff;
-}
+
 
 a.btn-admin:hover {
-    color: #ffffff;
+    color: #ffffff!important;
+}
+
+a.dropdown-item:hover {
+    background: #dee2e6;
+    font-weight: 600;
 }
 
 /**
 Frontend
  */
 
-a {
-    color: inherit !important;
+button, button > a
+{
+    color: inherit;
 }
 
 a:hover {
     text-decoration: none !important;
+}
+
+a.btn-primary {
+    color : #FFFFFF !important;
+}
+
+body {
+    padding-top: 70px;
 }
 
 /**

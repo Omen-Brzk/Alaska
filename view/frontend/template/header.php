@@ -28,6 +28,9 @@
     <script src="public/inc/js/bootsrap/bootstrap.bundle.js"></script>
     <link href="public/inc/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+
     <!-- TINY MCE -->
     <script src="public/inc/js/tinymce/tinymce.min.js"></script>
     <script>tinymce.init({
@@ -41,22 +44,61 @@
     </script>
 </head>
 
+
 <?php
-    if(isset($_SESSION['user']))
-        echo '<a href="index.php?action=disconnect">déconnexion</a>';
-        elseif(isset($_GET['action']))
-        {
-            if($_GET['action'] == 'register')
-            {
-                return NULL;
-            }
-            elseif($_GET['action'] =='login')
-            {
-                return NULL;
-            }
+    if(!isset($_SESSION['user']))
+    { ?>
+        <nav class="navbar navbar-dark fixed-top navbar-expand-lg bg-dark">
+            <a class="navbar-brand" href="#">Un Billet simple pour l' Alaska</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        } else {
-        echo '<a href="index.php?action=login">Se connecter</a> ou <a href="index.php?action=register">s\'inscrire</a>';
-    }
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php"><i class="fas fa-home"></i> Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php?action=login"><i class="fas fa-sign-in-alt"></i> Se connecter</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php?action=register"><i class="fas fa-user-plus"></i> S'inscrire</a>
+                    </li>
+                </ul>
+        </nav>
+   <?php } else
+    {?>
+        <nav class="navbar navbar-dark fixed-top navbar-expand-lg bg-dark">
+            <a class="navbar-brand" href="#">Un Billet simple pour l' Alaska</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-?>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php"><i class="fas fa-home"></i> Accueil</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="far fa-user"></i> <?= $_SESSION['user']->getUsername() ?>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <?php if ($_SESSION['user']->getGroupId() == User::IS_AUTHOR || $_SESSION['user']->getGroupId() == User::IS_ADMIN)
+                            { ?>
+                              <a class="dropdown-item" href="index.php?action=showAccount"><i class="fas fa-users-cog"></i> Panel Admin</a>
+                           <?php }
+                           else
+                           { ?>
+                               <a class="dropdown-item" href="index.php?action=showAccount"><i class="fas fa-user-circle"></i> Mon compte</a>
+                      <?php } ?>
+                            <a class="dropdown-item" href="index.php?action=disconnect"><i class="fas fa-sign-out-alt"></i> Se déconnecter</a>
+                        </div>
+                    </li>
+                    <li>
+                        <span></span>
+                    </li>
+                </ul>
+        </nav>
+<?php }?>

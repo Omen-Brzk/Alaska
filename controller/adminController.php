@@ -117,6 +117,76 @@ function deleteUserComment($commentId)
     header('Location:index.php?action=showAccount');
 }
 
+function editUser($userId)
+{
+
+    $userManager = new UserManager();
+    $user = $userManager->getUserByNameOrId($userId);
+
+    if(is_null($user))
+    {
+        return showError404('L\'utilisateur recherché n\'existe pas');
+    }
+    else
+    {
+        $title = 'Edition de l\'utilisateur : ' . $user->getUsername() .'';
+        require('view/backend/user-edit.php');
+    }
+}
+
+function sendUserEdit($datas)
+{
+    $userManager = new UserManager();
+    $user = $userManager->getUserByNameOrId($_GET['id']);
+
+    $user->setUsername($datas['username']);
+    $user->setMail($datas['mail']);
+
+    $userManager->updateUser($user);
+
+    $message = '<div class="alert alert-success alert-dismissible fade show" role="alert">
+          <strong>L\'utilisateur a bien été modifié !</strong>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>';
+
+    $userManager = new UserManager();
+    $userList = $userManager->getAllUser();
+
+    $commentManager = new CommentManager();
+    $commentList = $commentManager->getAllReportComment();
+
+    $postManager = new PostManager();
+    $postList = $postManager->getAllPost();
+
+    $title = "Administration";
+
+    require('view/backend/admin.php');
+}
+
+function promoteUser($userId, $groupId)
+{
+    $userManager = new UserManager();
+    $user = $userManager->getUserByNameOrId($userId);
+
+    $user->setGroupId($groupId);
+
+    $userManager->updateUser($user);
+
+    header('Location:index.php?action=showAccount');
+}
+
+function deleteUser($userId)
+{
+    $userManager = new UserManager();
+    $user = $userManager->getUserByNameOrId($userId);
+
+    $userManager->deleteUser($user);
+
+    header('Location:index.php?action=showAccount');
+}
+
 /**
  * AUTHOR FUNCTIONS
  */

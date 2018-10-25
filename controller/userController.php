@@ -22,7 +22,6 @@ function showRegister()
     return require('view/frontend/register.php');
 }
 
-
 function sendUserRegister($datas)
 {
     $title = 'Inscription';

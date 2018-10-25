@@ -50,6 +50,28 @@ if(isset($_GET['action']))
 
     }
 
+    elseif($_GET['action'] == 'editUser' && isset($_GET['id']) > 0)
+    {
+        if(isset($_POST['submit']))
+        {
+            sendUserEdit($_POST);
+        }
+        else
+        {
+            editUser($_GET['id']);
+        }
+    }
+
+    elseif($_GET['action'] == 'promoteUser' && isset($_GET['id']) && $_GET['id'] > 0)
+    {
+        promoteUser($_GET['id'], $_GET['groupid']);
+    }
+
+    elseif($_GET['action'] == 'deleteUser' && isset($_GET['id']) && $_GET['id'] > 0)
+    {
+        deleteUser($_GET['id']);
+    }
+
     elseif($_GET['action'] == 'deletePost' && isset($_GET['id']) && $_GET['id'] > 0)
     {
         deletePost($_GET['id']);

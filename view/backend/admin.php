@@ -50,7 +50,28 @@
                 elseif($user->getGroupId() == User::IS_AUTHOR) { ?>
                 <span class="badge badge-pill badge-danger">Auteur</span>
                 <?php }   ?></td>
-            <td><button type="button" class="btn btn-outline-light btn-sm"><a href="">Editer l'utilisateur</a></button></td>
+            <td>
+                <button type="button" class="btn btn-outline-info btn-sm">
+                    <a href="index.php?action=editUser&id=<?= $user->getId()?>">Editer l'utilisateur</a>
+                </button>
+            </td>
+            <td>
+                <div class="btn-group btn-group-sm">
+                    <button type="button" class="btn btn-outline-success dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                       Changer le rôle
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="index.php?action=promoteUser&id=<?=$user->getId()?>&groupid=<?= User::IS_ADMIN?>">Administrateur</a>
+                        <a class="dropdown-item" href="index.php?action=promoteUser&id=<?=$user->getId()?>&groupid=<?= User::IS_AUTHOR?>">Redacteur</a>
+                        <a class="dropdown-item" href="index.php?action=promoteUser&id=<?=$user->getId()?>&groupid=<?= User::IS_USER?>">Utilisateur</a>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <button type="button" class="btn btn-outline-danger btn-sm">
+                    <a href="index.php?action=deleteUser&id=<?= $user->getId()?>">Supprimer l'utilisateur</a>
+                </button>
+            </td>
         </tr>
     <?php } ?>
         </tbody>

@@ -42,6 +42,12 @@
             $('[data-toggle="tooltip"]').tooltip()
         })
     </script>
+    <script>
+        $(function () {
+            $('.dropdown-toggle').dropdown()
+        })
+
+    </script>
 </head>
 
 <?php

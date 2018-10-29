@@ -99,10 +99,11 @@ function addComment($datas)
 
         $comment = new Comment($commentArray);
         $commentManager->createComment($comment);
+        $message = '<div class="alert alert-success">Votre commentaire a bien été envoyé !</div>';
     }
     else
     {
-        $message = 'Vous devez écrire un commentaire';
+        $message = '<div class="alert alert-danger">Vous devez écrire un commentaire</div>';
     }
 
     $postManager = new PostManager();

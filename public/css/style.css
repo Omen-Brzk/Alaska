@@ -2,8 +2,6 @@
 Admin Panel
  */
 
-
-
 a.btn-admin:hover {
     color: #ffffff!important;
 }
@@ -30,10 +28,13 @@ a.btn-primary {
     color : #FFFFFF !important;
 }
 
-body {
-    padding-top: 70px;
+button.btn-custom {
+    text-transform: none!important;
 }
 
+button.btn-custom > a:hover {
+    color: inherit!important;
+}
 /**
 404 Page style
  */
@@ -41,6 +42,11 @@ body {
 body.errorpage-bg {
     background: rgb(131,58,180)!important;
     background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%)!important;
+    padding-top: 0px;
+}
+
+.errorpage-bg > nav {
+    display: none;
 }
 
 .error-page-component {

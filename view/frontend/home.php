@@ -9,33 +9,49 @@
 
 <?php ob_start(); ?>
 
-<div class="container-fluid">
-    <section id="">
-        <?php $count = 0;  ?>
-        <?php if(isset($posts) && count($posts) > 0) { ?>
-            <?php foreach ($posts as $post) { ?>
-                <?php $count++; ?>
-
-                <div class="jumbotron jumbotron-fluid">
-                    <div class="container">
-                        <h1 class="display-4"><?= $post->getTitle(); ?></h1>
-                        <p class="lead"><span class="badge badge-pill badge-danger"><i class="fa fa-user"></i> Auteur</span> Jean Forteroche</p>
-                        <p class="lead"><i class="far fa-calendar"></i> <?= $post->getCreationDate(); ?></p>
-                        <hr class="my-4">
-                        <p class="lead"><?= $post->getPostRecap(); ?></p>
-                        <a class="btn btn-primary btn-lg" role="button" href="index.php?action=showPost&id=<?= $post->getId(); ?>">Lien de l'article</a>
+    <header class="masthead" style="background-image: url('public/img/original_ALASKA_banner.jpg')">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <div class="site-heading">
+                        <h1>Jean-Forteroche</h1>
+                        <span class="subheading">Écrivain et voyageur chevronné</span>
                     </div>
                 </div>
-                <?php
-                if($count == $maxPosts) break;
-            }
+            </div>
+        </div>
+    </header>
+
+    <?php $count = 0;  ?>
+    <?php if(isset($posts) && count($posts) > 0) { ?>
+        <?php foreach ($posts as $post) { ?>
+            <?php $count++; ?>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="post-preview">
+                    <a href="index.php?action=showPost&id=<?= $post->getId()?>">
+                        <h2 class="post-title">
+                            <?= $post->getTitle() ?>
+                        </h2>
+                        <h3 class="post-subtitle">
+                           <?= $post->getPostRecap() ?>
+                        </h3>
+                    </a>
+                    <p class="post-meta"><?= $post->getCreationDate() ?> par <span class="badge badge-pill badge-danger"><i class="fa fa-user"></i> Auteur</span> Jean Forteroche</p></p>
+                </div>
+            </div>
+        </div>
+        <hr>
+            <?php
+            if($count == $maxPosts) break;
         }
-        else {
-            echo 'Aucun article';
-        }
-        ?>
-    </section>
-</div>
+    }
+    else {
+        echo 'Aucun article';
+    }
+    ?>
 
 
 

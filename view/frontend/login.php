@@ -15,7 +15,7 @@
     <div class="login-form vertical-center">
     <div class="main-div">
         <div class="panel">
-            <h2>Connexion</h2>
+            <h1>Connexion</h1>
             <p>Veuillez rentrer votre pseudo et mot de passe</p>
         </div>
         <form id="Login" method="POST">

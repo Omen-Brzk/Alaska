@@ -36,33 +36,33 @@ function sendUserRegister($datas)
 
         if(!preg_match('/^([a-zA-Z-0-9-_ ]+)$/' , $datas['username']))
         {
-            array_push($errors, 'Format du pseudo invalide (Lettres & chiffres uniquement)');
+            array_push($errors, '<div class=\'alert alert-custom alert-danger\'>Format du pseudo invalide (Lettres & chiffres uniquement)</div>');
         }
 
         if(!preg_match('/^[^\W][a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\@[a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\.[a-zA-Z]{2,4}$/' , $datas['mail']))
         {
-            array_push($errors, 'Veuillez entrer une adresse mail valide');
+            array_push($errors, '<div class=\'alert alert-custom alert-danger\'>Veuillez entrer une adresse mail valide</div>');
         }
 
         if($userManager->usernameExist($datas['username']))
         {
-            array_push($errors, 'Ce pseudo est déja utilisé');
+            array_push($errors, '<div class=\'alert alert-custom alert-danger\'>Ce pseudo est déja utilisé</div>');
         }
 
         if($userManager->mailExist($datas['mail']))
         {
-            array_push($errors, 'Cette adresse mail est déja utilisée');
+            array_push($errors, '<div class=\'alert alert-custom alert-danger\'>Cette adresse mail est déja utilisée</div>');
         }
 
         if($datas['userpass'] != $datas['userpass-confirm'])
         {
-            array_push($errors,'Les mots de passe ne correspondent pas');
+            array_push($errors,'<div class=\'alert alert-custom alert-danger\'>Les mots de passe ne correspondent pas</div>');
         }
 
 
         if(strlen($datas['userpass'] ) < 5 || strlen($datas['userpass-confirm']) < 5)
         {
-            array_push($errors, 'Votre mot de passe doit faire au moins 5 caractères');
+            array_push($errors, '<div class=\'alert alert-custom alert-danger\'>Votre mot de passe doit faire au moins 5 caractères</div>');
         }
 
         if(count($errors) > 0)

@@ -151,3 +151,36 @@ footer  a
 .alert-custom {
     font-size: medium!important;
 }
+
+.account-page {
+    background-color: #21D4FD;
+    background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
+    overflow: hidden;
+
+}
+
+.container .img{
+    text-align:center;
+}
+.container .details{
+    border-left:3px solid #ded4da;
+}
+.container .details p{
+    font-size:15px;
+    font-weight:bold;
+}
+
+.user-panel img {
+    height: 150px;
+    width: 150px;
+    margin: auto;
+    padding-top: 50px;
+}
+
+.account-page .text-muted {
+    color: #FFFFFF!important;
+}
+
+.account-page > footer {
+    padding: 0px 0 40px;
+}

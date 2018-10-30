@@ -17,9 +17,10 @@
 
     <title><?= isset($title) ? $title : 'Page inconnue' ?></title>
 
-    <!-- PERSONNAL CSS -->
+    <!-- PERSONNAL SOURCES -->
     <link href="public/css/style.css" rel="stylesheet">
     <link href="public/css/style.min.css" rel="stylesheet">
+
 
 
     <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>

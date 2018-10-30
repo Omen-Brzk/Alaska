@@ -10,7 +10,7 @@ $title = $post->getTitle();
 
  ob_start(); ?>
 
-<header class="masthead" style="background-image: url('public/img/Alaska_2.jpg')">
+<header class="masthead" style="background-image: url('public/img/Alaska_2.jpg');">
     <div class="overlay"></div>
     <div class="container">
         <div class="row">
@@ -31,10 +31,9 @@ $title = $post->getTitle();
             <div class="post-preview">
                 <p class="post-meta"><?= $post->getCreationDate() ?> par <span class="badge badge-pill badge-danger"><i class="fa fa-user"></i> Auteur</span> Jean Forteroche</p>
             </div>
-
         </div>
         </div>
-    </div>
+</div>
     <hr>
 
 <?php if (isset($_SESSION['user'])) { ?>

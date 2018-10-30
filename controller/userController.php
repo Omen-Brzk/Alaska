@@ -91,7 +91,7 @@ function sendUserRegister($datas)
         $empty = true;
         if($empty)
         {
-            $empty = 'Vous devez remplir tous les champs';
+            $empty = '<div class="alert alert-danger">Vous devez remplir tous les champs</div>';
             return include('view/frontend/register.php');
         }
     }
@@ -163,20 +163,20 @@ function sendUserLogin($datas)
            else
            {
                setcookie('user_get_name', $datas['username'], time()+3600, null, null, false, true);
-               $message = "Mauvais pseudo ou mot de passe.";
+               $message = "<div class='alert alert-danger'>Mauvais pseudo ou mot de passe.</div>";
                require('view/frontend/login.php');
            }
        }
        else
        {
-           $message = "Mauvais pseudo ou mot de passe.";
+           $message = "<div class='alert alert-custom alert-danger'>Mauvais pseudo ou mot de passe.</div>";
            require('view/frontend/login.php');
        }
     }
 
     else
     {
-        $message = "Vous devez remplir tous les champs pour vous connecter";
+        $message = "<div class='alert alert-custom alert-danger'>Vous devez remplir tous les champs pour vous connecter</div>";
         require('view/frontend/login.php');
     }
 }

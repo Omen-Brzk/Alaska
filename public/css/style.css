@@ -1,62 +1,51 @@
-/**
-Admin Panel
- */
-
 a.btn-admin:hover {
-    color: #ffffff!important;
+    color: #fff!important
 }
 
 a.dropdown-item:hover {
     background: #dee2e6;
-    font-weight: 600;
+    font-weight: 600
 }
 
-/**
-Frontend
- */
-
-button, button > a
-{
-    color: inherit;
+button,
+button>a {
+    color: inherit
 }
 
 a:hover {
-    text-decoration: none !important;
+    text-decoration: none!important
 }
 
 a.btn-primary {
-    color : #FFFFFF !important;
+    color: #FFF!important
 }
 
-button.btn-custom {
-    text-transform: none!important;
+button.btn-custom>a:hover {
+    color: inherit!important
 }
-
-button.btn-custom > a:hover {
-    color: inherit!important;
-}
-/**
-404 Page style
- */
 
 body.errorpage-bg {
-    background: rgb(131,58,180)!important;
-    background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%)!important;
-    padding-top: 0px;
+    background: #833ab4!important;
+    background: linear-gradient(90deg, rgba(131, 58, 180, 1) 0, rgba(253, 29, 29, 1) 50%, rgba(252, 176, 69, 1) 100%)!important;
+    padding-top: 0
 }
 
-.errorpage-bg > nav {
-    display: none;
+.errorpage-bg>nav {
+    display: none
+}
+
+.errorpage-bg > footer {
+    display : none;
 }
 
 .error-page-component {
-    color: #FFFFFF!important;
+    color: #FFF!important
 }
 
 .vertical-center {
     min-height: 100%;
     min-height: 90vh;
-    background: none !important;
+    background: 0 0!important;
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
@@ -72,5 +61,93 @@ body.errorpage-bg {
     -moz-box-pack: center;
     -ms-flex-pack: center;
     -webkit-justify-content: center;
-    justify-content: center;
+    justify-content: center
+}
+
+footer  a
+{
+    color: initial!important;
+}
+
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: none!important;
+}
+
+.table td, .table th {
+    padding: .75rem;
+    vertical-align: inherit!important;
+    border-top: none!important;
+}
+
+.login-page > nav {
+    display: none;
+}
+
+.login-page > footer {
+    display: none;
+}
+
+.form-heading { color:#fff; font-size:23px;}
+.panel h2{ color:#444444; font-size:18px; margin:0 0 8px 0;}
+.panel p { color:#777777; font-size:14px; margin-bottom:30px; line-height:24px;}
+.login-form .form-control {
+    background: #f7f7f7 none repeat scroll 0 0;
+    border: 1px solid #d4d4d4;
+    border-radius: 4px;
+    font-size: 14px;
+    height: 50px;
+    line-height: 50px;
+}
+.main-div {
+    background: #ffffff none repeat scroll 0 0;
+    border-radius: 2px;
+    margin: 10px auto 30px;
+    max-width: 38%;
+    padding: 50px 70px 70px 71px;
+}
+
+.login-form .form-group {
+    margin-bottom:10px;
+}
+.login-form{ text-align:center;}
+.forgot a {
+    color: #777777;
+    font-size: 14px;
+    text-decoration: underline;
+}
+.login-form  .btn.btn-primary {
+    background: #f0ad4e none repeat scroll 0 0;
+    border-color: #f0ad4e;
+    color: #ffffff;
+    font-size: 14px;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    padding: 0;
+}
+.forgot {
+    text-align: left; margin-bottom:30px;
+}
+.botto-text {
+    color: #ffffff;
+    font-size: 14px;
+    margin: auto;
+}
+.login-form .btn.btn-primary.reset {
+    background: #ff9900 none repeat scroll 0 0;
+}
+.back { text-align: left; margin-top:10px;}
+.back a {color: #444444; font-size: 13px;text-decoration: none;}
+
+.custom-sm {
+    box-sizing: content-box!important;
+}
+
+.main-div {
+    box-sizing: content-box!important;
+}
+
+.alert-custom {
+    font-size: medium!important;
 }

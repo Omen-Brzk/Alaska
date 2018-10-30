@@ -68,7 +68,7 @@ class PostManager extends Database
     public function getAllPost()
     {
         $postsList = [];
-        $req = $this->_db->query('SELECT *, DATE_FORMAT(creationDate, "Posté le %d/%m/%y à %H:%i:%s") AS creationDate FROM posts');
+        $req = $this->_db->query('SELECT *, DATE_FORMAT(creationDate, "Posté le %d/%m/%y à %H:%i:%s") AS creationDate FROM posts ORDER BY id DESC ');
 
         while($post = $req->fetch(PDO::FETCH_ASSOC))
         {

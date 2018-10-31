@@ -210,7 +210,7 @@ function createPost($datas)
 
         if(preg_match('/(<script>)/', $datas['title']) || preg_match('/(<script>)/', $datas['postRecap']) || preg_match('/(<script>)/', $datas['content']))
         {
-            $message = 'L\'insertion de script n\'est pas autorisée, pour plus d\'information, consultez le développeur';
+            $message = '<div class="alert alert-danger">L\'insertion de script n\'est pas autorisée, pour plus d\'information, consultez le développeur</div>';
 
             return require('view/backend/post-add.php');
         }

@@ -9,16 +9,28 @@
 
 <?php ob_start(); ?>
 
-<div class="jumbotron">
-    <h5>Données utilisateur <?= $user->getUsername() ?> (inscrit le : <?= $user->getDateSignin() ?>)</h5>
+<body class="admin-panel-bg">
+<div class="container-fluid text-center author-content">
 
+<div class="author-box text-center">
+    <h5 class="form-heading">Données utilisateur <?= $user->getUsername() ?> (inscrit le : <?= $user->getDateSignin() ?>)</h5>
+    <hr>
     <form method="POST">
-       <label for="username">Pseudo :</label> <input type="text" name="username" value="<?= $user->getUsername()?>">
-        <label for="mail">adresse mail :</label> <input type="email" name="mail" value="<?= $user->getMail()?>">
-        <input type="submit" name="submit" value="valider">
+        <div class="form-group">
+            <p class="lead">Pseudo :</p>
+            <input class="form-control" type="text" name="username" value="<?= $user->getUsername()?>">
+        </div>
+        <div class="form-group">
+            <p class="lead">Adresse mail :</p>
+            <input class="form-control" type="email" name="mail" value="<?= $user->getMail()?>">
+        </div>
+        <hr>
+        <button class="btn btn-outline-light btn-lg" type="submit" name="submit"><i class="fas fa-check"></i> Valider</button>
     </form>
 </div>
-<a href="index.php?action=showAccount">Retour au panel</a>
+    <button class="btn btn-outline-light"><i class="fa fa-home"></i><a href="index.php?action=showAccount"> Retour au panel</a>
+</div>
+
 <?php  $content = ob_get_clean();
 
 require('template/body.php');

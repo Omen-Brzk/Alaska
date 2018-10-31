@@ -9,32 +9,28 @@
 
 <?php ob_start() ?>
 
-
-    <div class="container">
-
-        <div>
+    <body class="admin-panel-bg">
+    <div class="container-fluid text-center">
+        <div class="author-box text-center author-content">
             <h1>Edition de l'article</h1>
-        </div>
-
         <form method="post">
-            <label for="title">Titre de l'article</label><input type="text" name="title" value="<?= $post->getTitle(); ?>">
-            <label for="postRecap">Resumé de l'article</label> <input type="text" name="postRecap" value="<?= $post->getPostRecap(); ?>">
+            <div class="form-group">
+                <p class="lead">Titre de l'article</p>
+                <input type="text" name="title" class="form-control" value="<?= $post->getTitle(); ?>">
+            </div>
+            <div class="form-group">
+                <p class="lead">Resumé de l'article</p>
+                <input type="text" name="postRecap" class="form-control" value="<?= $post->getPostRecap(); ?>">
+            </div>
+
             <hr>
             <textarea id="tinymce-editor" name="content"><?= $post->getContent();?></textarea>
-            <input type="submit" name="submit" value="Valider">
+            <hr>
+            <button class="btn btn-outline-light btn-lg" type="submit" name="submit"><i class="fas fa-check"></i> Valider</button>
         </form>
-
+        </div>
+        <button class="btn btn-outline-light"><i class="fa fa-home"></i><a href="index.php?action=showAccount"> Retour au panel</a>
     </div>
-
-
-
-
-
-
-
-
-
-
 <?php $content = ob_get_clean(); ?>
 
 <?php require('template/body.php');

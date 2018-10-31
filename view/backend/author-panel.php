@@ -7,12 +7,12 @@
  */
 ?>
 
-   <p class="lead text-center">
+   <p class="lead text-center author-content">
         Fonctionnalités Auteur
     </p>
     <table class="table table-dark table-striped table-hover table-sm">
         <thead>
-        <tr>
+        <tr class="sm-grid">
             <th scope="col">Id de l'article</th>
             <th scope="col">Résumé</th>
             <th scope="col">Date de création</th>
@@ -23,15 +23,15 @@
 
         <?php if(!empty($postList))
         { ?>
-            <tr>
+            <tr class="sm-grid">
                     <td class="text-center" colspan="6">
-                        <button type="button" class="btn btn-outline-light btn-sm">
+                        <button type="button" class="btn btn-outline-light">
                             <a href="index.php?action=createPost">Créer un article</a>
                         </button>
                     </td>
                 </tr>
             <?php foreach ($postList as $post) { ?>
-                <tr>
+                <tr class="sm-grid">
                     <td><?= $post->getId() ?></td>
                     <td class=""><?= $post->getPostRecap() ?></td>
                     <td><?= $post->getCreationDate() ?></td>
@@ -54,14 +54,14 @@
             <?php }
         }
         else { ?>
-            <tr>
+            <tr class="sm-grid">
                 <td class="text-center" colspan="6">
                     <button type="button" class="btn btn-outline-light btn-sm">
                         <a class="btn-admin" href="index.php?action=createPost">Créer un article</a>
                     </button>
                 </td>
             </tr>
-            <tr>
+            <tr class="sm-grid">
                 <td class="bg-danger text-center" colspan="6">Aucun article n'a été posté.</td>
             </tr>
         <?php }?>

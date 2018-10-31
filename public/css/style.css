@@ -184,3 +184,48 @@ footer  a
 .account-page > footer {
     padding: 0px 0 40px;
 }
+
+.main-content {
+    padding-top: 70px;
+}
+
+.admin-panel-bg {
+    background: #222d32;
+    color: #FFFFFF;
+}
+.text-red {
+    color: #dd4b39 !important;
+    cursor: pointer;
+}
+
+.text-aqua {
+    color: #00c0ef !important;
+}
+
+@media (max-width: 768px) {
+    .sm-grid {
+        display: grid;
+        text-align: center;
+    }
+    .author-box {
+        max-width: 100%!important;
+    }
+}
+
+.author-content {
+    padding-top: 20px;
+}
+
+.author-box {
+    border-radius: -2px;
+    margin: 10px auto 30px;
+    max-width: 60%;
+    padding: 50px 70px 70px 71px;
+    border: 1px solid transparent;
+    border-image: linear-gradient(to left, #2e98bc 0%, #c66262 100%);
+    border-image-slice: 1;
+}
+
+.padding-box {
+    padding-top: 70px;
+}

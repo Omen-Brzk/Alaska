@@ -10,23 +10,32 @@
 
 <?php ob_start() ?>
 
-<div class="container">
+<body class="admin-panel-bg">
+<div class="container-fluid text-center author-content">
 
-<div>
+<div class="author-box text-center">
     <h1>Creation d'article</h1>
-</div>
-
     <form method="post">
-        <label for="postRecap">Titre de l'article</label> <input type="text" name="title" value="<?= isset($post) ? $post->getTitle() : '' ?>">
-        <label for="postRecap">Resumé de l'article</label> <input type="text" name="postRecap" value="<?= isset($post) ? $post->getPostRecap() : '' ?>">
+        <div class="form-group">
+            <p class="lead">Titre de l'article</p>
+            <input class="form-control" type="text" name="title" value="<?= isset($post) ? $post->getTitle() : '' ?>">
+        </div>
+        <div class="form-group">
+            <p class="lead">Resumé de l'article</p>
+            <input class="form-control" type="text" name="postRecap" value="<?= isset($post) ? $post->getPostRecap() : '' ?>">
+        </div>
         <hr>
-        <textarea id="tinymce-editor" name="content"><?= isset($post) ? $post->getContent() : '' ?></textarea>
-        <input type="submit" value="Valider">
+        <textarea class="form-control" id="tinymce-editor" name="content"><?= isset($post) ? $post->getContent() : '' ?></textarea>
+        <hr>
+        <button class="btn btn-outline-light btn-lg" type="submit" name="submit"><i class="fas fa-check"></i> Valider</button>
     </form>
-
+    <hr>
+    <?= isset($message) ? $message : '' ?>
+</div>
+    <button class="btn btn-outline-light"><i class="fa fa-home"></i><a href="index.php?action=showAccount"> Retour au panel</a>
 </div>
 
-<?= isset($message) ? $message : '' ?>
+
 
 
 

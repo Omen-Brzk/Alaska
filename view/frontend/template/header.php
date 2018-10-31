@@ -59,7 +59,7 @@ if(!isset($_SESSION['user']))
 { ?>
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
         <a class="navbar-brand" href="#">Billet simple pour l' Alaska</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -79,11 +79,10 @@ if(!isset($_SESSION['user']))
 <?php } else
 {?>
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-        <a class="navbar-brand" href="index.php"><strong>B</strong>illet simple pour l' Alaska</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand" href="index.php">Billet simple pour l' Alaska</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navbarToggler">
             <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                 <li class="nav-item">
@@ -104,9 +103,6 @@ if(!isset($_SESSION['user']))
                         <?php } ?>
                         <a class="dropdown-item" href="index.php?action=disconnect"><i class="fas fa-sign-out-alt"></i> Se déconnecter</a>
                     </div>
-                </li>
-                <li>
-                    <span></span>
                 </li>
             </ul>
     </nav>

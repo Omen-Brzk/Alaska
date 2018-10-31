@@ -109,7 +109,7 @@ class CommentManager extends Database
     {
         $commentsList = [];
 
-        $req = $this->_db->query('SELECT * FROM comments WHERE reports > 0');
+        $req = $this->_db->query('SELECT * FROM comments ORDER BY reports DESC');
 
         while ($comment = $req->fetch(PDO::FETCH_ASSOC))
         {

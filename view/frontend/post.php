@@ -34,7 +34,8 @@ $title = $post->getTitle();
         </div>
         </div>
 </div>
-    <hr>
+
+<hr>
 
 <?php if (isset($_SESSION['user'])) { ?>
 <div class="container">
@@ -59,11 +60,10 @@ $title = $post->getTitle();
         <?php include('comments.php'); ?>
     </div>
     </div>
+    <div class="text-center">
+        <button class="btn btn-outline-dark text-center"><i class="fa fa-home"></i><a href="index.php"> Retour à l'accueil</a>
+    </div>
 </div>
-
-
-
-<a href="index.php">Retour à l'accueil</a>
 <?php  $content = ob_get_clean();
 
 require('template/body.php');

@@ -162,22 +162,21 @@ function sendUserLogin($datas)
            }
            else
            {
-               setcookie('user_get_name', $datas['username'], time()+3600, null, null, false, true);
                $message = "<div class='alert alert-danger'>Mauvais pseudo ou mot de passe.</div>";
-               require('view/frontend/login.php');
+               return require('view/frontend/login.php');
            }
        }
        else
        {
            $message = "<div class='alert alert-custom alert-danger'>Mauvais pseudo ou mot de passe.</div>";
-           require('view/frontend/login.php');
+           return require('view/frontend/login.php');
        }
     }
 
     else
     {
         $message = "<div class='alert alert-custom alert-danger'>Vous devez remplir tous les champs pour vous connecter</div>";
-        require('view/frontend/login.php');
+        return require('view/frontend/login.php');
     }
 }
 

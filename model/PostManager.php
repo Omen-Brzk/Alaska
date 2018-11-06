@@ -52,7 +52,7 @@ class PostManager extends Database
 
     public function getPostById($id)
     {
-        $req = $this->_db->prepare('SELECT *, DATE_FORMAT(creationDate, "Posté le %d/%m/%y à %H:%i:%s") AS creationDate FROM posts WHERE id = :id');
+        $req = $this->_db->prepare('SELECT * FROM posts WHERE id = :id');
         $req->bindValue(':id', (int)$id);
 
         $req->execute();
@@ -65,10 +65,12 @@ class PostManager extends Database
         }
     }
 
-    public function getAllPost()
+    public function getAllPostAdmin()
     {
         $postsList = [];
-        $req = $this->_db->query('SELECT *, DATE_FORMAT(creationDate, "Posté le %d/%m/%y à %H:%i:%s") AS creationDate FROM posts ORDER BY id DESC ');
+
+
+        $req = $this->_db->query('SELECT * FROM posts ORDER BY id DESC');
 
         while($post = $req->fetch(PDO::FETCH_ASSOC))
         {
@@ -76,5 +78,27 @@ class PostManager extends Database
         }
         $req->closeCursor();
         return $postsList;
+    }
+
+    public function getAllPost($limit, $offset)
+    {
+        $postsList = [];
+
+        $req = $this->_db->query('SELECT * FROM posts ORDER BY id DESC LIMIT ' . (int)$limit . ' OFFSET ' . (int)$offset);
+
+        while($post = $req->fetch(PDO::FETCH_ASSOC))
+        {
+            array_push($postsList, new Post($post));
+        }
+        $req->closeCursor();
+        return $postsList;
+    }
+
+    public function getPostsCount()
+    {
+        $req = $this->_db->query('SELECT COUNT(*) FROM posts');
+        $req->execute();
+
+        return $req->fetch(PDO::FETCH_COLUMN);
     }
 }

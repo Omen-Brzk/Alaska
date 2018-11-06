@@ -23,7 +23,7 @@ function admin_showPanel()
     $commentList = $commentManager->getAllReportComment();
 
     $postManager = new PostManager();
-    $postList = $postManager->getAllPost();
+    $postList = $postManager->getAllPostAdmin();
 
     $title = "Administration";
 
@@ -78,7 +78,7 @@ function sendUserEditComment($datas)
             $commentList = $commentManager->getAllReportComment();
 
             $postManager = new PostManager();
-            $postList = $postManager->getAllPost();
+            $postList = $postManager->getAllPost(5,0);
 
             $title = "Administration";
 
@@ -110,7 +110,7 @@ function deleteUserComment($commentId)
     $commentList = $commentManager->getAllReportComment();
 
     $postManager = new PostManager();
-    $postList = $postManager->getAllPost();
+    $postList = $postManager->getAllPost(5,0);
 
     $title = "Administration";
 
@@ -158,7 +158,7 @@ function sendUserEdit($datas)
     $commentList = $commentManager->getAllReportComment();
 
     $postManager = new PostManager();
-    $postList = $postManager->getAllPost();
+    $postList = $postManager->getAllPost(5,0);
 
     $title = "Administration";
 
@@ -224,7 +224,7 @@ function createPost($datas)
         $commentList = $commentManager->getAllReportComment();
 
         $postManager = new PostManager();
-        $postList = $postManager->getAllPost();
+        $postList = $postManager->getAllPost(5,0);
 
         $title = "Administration";
 
@@ -279,7 +279,7 @@ function sendPostEdit($datas)
     $commentList = $commentManager->getAllReportComment();
 
     $postManager = new PostManager();
-    $postList = $postManager->getAllPost();
+    $postList = $postManager->getAllPost(5,0);
 
     $title = "Administration";
 

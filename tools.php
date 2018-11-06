@@ -13,3 +13,16 @@ function loadClass($classname)
 {
     require 'class/' . $classname . '.php';
 }
+
+/**
+ * @param $datetime
+ * @return string
+ */
+function convertDatetimeToString($datetime)
+{
+    $result = new DateTime($datetime);
+    $date = $result->format('d/m/Y');
+    $hour = $result->format('H:i');
+
+    return $date . ' à ' . $hour;
+}

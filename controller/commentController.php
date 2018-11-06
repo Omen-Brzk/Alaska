@@ -36,6 +36,7 @@ function showCommentEdit($commentId)
 
 function sendCommentEdit($datas)
 {
+    $title = "Modifier le commentaire";
     $commentManager = new CommentManager();
     $comment = $commentManager->getCommentById($datas['commentId']);
 
@@ -70,7 +71,7 @@ function sendCommentEdit($datas)
     }
     else
     {
-        $message = 'Veuillez rentrer un commentaire';
+        $message = '<div class="alert alert-danger">Veuillez rentrer un commentaire</div>';
         return require('view/frontend/comment-edit.php');
     }
 
@@ -99,11 +100,11 @@ function addComment($datas)
 
         $comment = new Comment($commentArray);
         $commentManager->createComment($comment);
-        $message = '<div class="alert alert-success">Votre commentaire a bien été envoyé !</div>';
+        $message = '<div class="alert alert-success text-center">Votre commentaire a bien été envoyé !</div>';
     }
     else
     {
-        $message = '<div class="alert alert-danger">Vous devez écrire un commentaire</div>';
+        $message = '<div class="alert alert-danger text-center">Vous devez écrire un commentaire</div>';
     }
 
     $postManager = new PostManager();

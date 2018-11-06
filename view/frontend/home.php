@@ -9,7 +9,7 @@
 
 <?php ob_start(); ?>
 
-    <header class="masthead" style="background-image: url('public/img/original_ALASKA_banner.jpg')">
+    <header class="masthead masthead-home">
         <div class="overlay"></div>
         <div class="container">
             <div class="row">
@@ -23,38 +23,48 @@
         </div>
     </header>
 
-    <?php $count = 0;  ?>
-    <?php if(isset($posts) && count($posts) > 0) { ?>
-        <?php foreach ($posts as $post) { ?>
-            <?php $count++; ?>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-md-10 mx-auto">
-                <div class="post-preview">
-                    <a href="index.php?action=showPost&id=<?= $post->getId()?>">
-                        <h2 class="post-title">
-                            <?= $post->getTitle() ?>
-                        </h2>
-                        <h3 class="post-subtitle">
-                           <?= $post->getPostRecap() ?>
-                        </h3>
-                    </a>
-                    <p class="post-meta"><?= $post->getCreationDate() ?> par <span class="badge badge-pill badge-danger"><i class="fa fa-user"></i> Auteur</span> Jean Forteroche</p></p>
+    <?php if(isset($posts))
+    { ?>
+        <?php foreach ($posts as $post)
+        { ?>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <div class="post-preview">
+                        <a href="index.php?action=showPost&id=<?= $post->getId()?>">
+                            <h2 class="post-title">
+                                <?= $post->getTitle() ?>
+                            </h2>
+                            <h3 class="post-subtitle">
+                               <?= $post->getPostRecap() ?>
+                            </h3>
+                        </a>
+                        <p class="post-meta"><?= 'Publié le ' . convertDatetimeToString($post->getCreationDate()) ?> par <span class="badge badge-pill badge-danger"><i class="fa fa-user"></i> Auteur</span> Jean Forteroche</p></p>
+                    </div>
                 </div>
             </div>
         </div>
+
         <hr>
             <?php
-            if($count == $maxPosts) break;
         }
     }
-    else {
-        echo 'Aucun article';
+    else
+    {
+        echo '<div class="alert alert-danger text-center">Aucun article</div>';
+    }
+
+    /** PAGINATION */
+?> <nav aria-label="pagination navigation">
+    <ul class="pagination justify-content-center">
+    <?php
+    for($i = 0; $i <= $pages; $i++)
+    {
+        $number = $i;
+        echo '<li class="page-item"><a class="page-link" href="index.php?page=' . $i . '">' . ++$number . '</a></li>';
     }
     ?>
-
-
-
-<?php $content = ob_get_clean(); ?>
-
-<?php require('template/body.php'); ?>
+    </ul>
+    </nav>
+<?php $content = ob_get_clean();
+require('template/body.php'); ?>

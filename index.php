@@ -50,6 +50,11 @@ if(isset($_GET['action']))
 
     }
 
+    elseif($_GET['action'] == 'deletePost' && isset($_GET['id']) && $_GET['id'] > 0)
+    {
+        deletePost($_GET['id']);
+    }
+
     elseif($_GET['action'] == 'editUser' && isset($_GET['id']) > 0)
     {
         if(isset($_POST['submit']))
@@ -70,11 +75,6 @@ if(isset($_GET['action']))
     elseif($_GET['action'] == 'deleteUser' && isset($_GET['id']) && $_GET['id'] > 0)
     {
         deleteUser($_GET['id']);
-    }
-
-    elseif($_GET['action'] == 'deletePost' && isset($_GET['id']) && $_GET['id'] > 0)
-    {
-        deletePost($_GET['id']);
     }
 
     elseif($_GET['action'] == 'editUserComment' && isset($_GET['id']) && $_GET['id'] > 0)
@@ -124,6 +124,12 @@ if(isset($_GET['action']))
         }
     }
 
+    elseif($_GET['action'] == 'showAccount')
+    {
+
+        showUserAccount($_SESSION['user']);
+    }
+
     elseif ($_GET['action'] == 'register' && !isset($_SESSION['user']))
     {
         if(isset($_POST['submit']))
@@ -134,12 +140,6 @@ if(isset($_GET['action']))
         {
             showRegister();
         }
-    }
-
-    elseif($_GET['action'] == 'showAccount')
-    {
-
-        showUserAccount($_SESSION['user']);
     }
 
     elseif($_GET['action'] == 'login')
@@ -163,6 +163,10 @@ if(isset($_GET['action']))
     {
         showError404("Page introuvable");
     }
+}
+elseif(isset($_GET['page']))
+{
+    showAllPost($_GET['page']);
 }
 else
 {

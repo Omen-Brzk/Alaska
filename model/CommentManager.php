@@ -69,8 +69,8 @@ class CommentManager extends Database
     public function getAllCommentByPostId($postId)
     {
         $commentsList = [];
-
-        $req = $this->_db->prepare('SELECT *, DATE_FORMAT(commentDate, "Posté le %d/%m/%y à %H:%i:%s") AS commentDate FROM comments WHERE postId = :postId ORDER BY commentDate DESC');
+        //Posté le %d/%m/%y à %H:%i:%s
+        $req = $this->_db->prepare('SELECT * FROM comments WHERE postId = :postId ORDER BY commentDate DESC');
         $req->bindValue(':postId' , htmlspecialchars((int)$postId));
 
         $req->execute();
@@ -79,7 +79,7 @@ class CommentManager extends Database
         {
             array_push($commentsList, new Comment($comment));
         }
-
+        
         if(!empty($commentsList))
         {
             return $commentsList;

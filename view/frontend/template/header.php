@@ -21,8 +21,6 @@
     <link href="public/css/style.css" rel="stylesheet">
     <link href="public/css/style.min.css" rel="stylesheet">
 
-
-
     <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
@@ -57,12 +55,11 @@
 <?php
 if(!isset($_SESSION['user']))
 { ?>
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <nav class="navbar navbar-custom navbar-expand-lg navbar-light fixed-top" id="mainNav">
         <a class="navbar-brand" href="#">Billet simple pour l' Alaska</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navbarToggler">
             <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                 <li class="nav-item">
@@ -75,10 +72,11 @@ if(!isset($_SESSION['user']))
                     <a class="nav-link" href="index.php?action=register"><i class="fas fa-user-plus"></i> S'inscrire</a>
                 </li>
             </ul>
+        </div>
     </nav>
 <?php } else
 {?>
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <nav class="navbar navbar-custom navbar-expand-lg navbar-light fixed-top" id="mainNav">
         <a class="navbar-brand" href="index.php">Billet simple pour l' Alaska</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -105,6 +103,7 @@ if(!isset($_SESSION['user']))
                     </div>
                 </li>
             </ul>
+        </div>
     </nav>
 <?php }?>
 

@@ -25,30 +25,22 @@
         { ?>
             <tr class="sm-grid">
                     <td class="text-center" colspan="6">
-                        <button type="button" class="btn btn-outline-light">
-                            <a href="index.php?action=createPost">Créer un article</a>
-                        </button>
+                        <a class="btn btn-outline-light" href="index.php?action=createPost">Créer un article</a>
                     </td>
                 </tr>
             <?php foreach ($postList as $post) { ?>
                 <tr class="sm-grid">
                     <td><?= $post->getId() ?></td>
-                    <td class=""><?= $post->getPostRecap() ?></td>
+                    <td><?= $post->getPostRecap() ?></td>
                     <td><?= $post->getCreationDate() ?></td>
                     <td>
-                        <button type="button" class="btn btn-outline-success btn-sm">
-                            <a class="btn-admin" href="index.php?action=showPost&id=<?= $post->getId() ?>">Accéder à l'article</a>
-                        </button>
+                        <a class="btn btn-outline-success btn-sm" href="index.php?action=showPost&id=<?= $post->getId() ?>">Accéder à l'article</a>
                     </td>
                     <td>
-                        <button type="button" class="btn btn-outline-info btn-sm">
-                            <a class="btn-admin" href="index.php?action=editPost&id=<?= $post->getId() ?>">Editer l'article</a>
-                        </button>
+                        <a class="btn btn-outline-info btn-sm" href="index.php?action=editPost&id=<?= $post->getId() ?>">Editer l'article</a>
                     </td>
                     <td>
-                        <button type="button" class="btn btn-outline-danger btn-sm">
-                            <a class="btn-admin" href="index.php?action=deletePost&id=<?= $post->getId() ?>">Supprimer l'article</a>
-                        </button>
+                        <a class="btn btn-outline-danger btn-sm" href="index.php?action=deletePost&id=<?= $post->getId() ?>">Supprimer l'article</a>
                     </td>
                 </tr>
             <?php }
@@ -56,9 +48,7 @@
         else { ?>
             <tr class="sm-grid">
                 <td class="text-center" colspan="6">
-                    <button type="button" class="btn btn-outline-light btn-sm">
-                        <a class="btn-admin" href="index.php?action=createPost">Créer un article</a>
-                    </button>
+                    <a class="btn btn-outline-light btn-sm" href="index.php?action=createPost">Créer un article</a>
                 </td>
             </tr>
             <tr class="sm-grid">

@@ -10,14 +10,19 @@ require_once ('model/CommentManager.php');
 require_once ('model/PostManager.php');
 require_once('model/UserManager.php');
 
-function showAllPost()
+function showAllPost($page = 0)
 {
     $postManager = new PostManager();
-    $posts = $postManager->getAllPost();
+
+    $maxPost = 5;
+    $pages = round((int)$postManager->getPostsCount() / $maxPost, 0, PHP_ROUND_HALF_UP);
+
+    $posts = $postManager->getAllPost($maxPost, $page * 5);
+
+    if(empty($posts))
+        return showError404('Cette page n\'existe pas');
 
     $title = 'Accueil';
-
-    $maxPosts = 5;
 
     require('view/frontend/home.php');
 }

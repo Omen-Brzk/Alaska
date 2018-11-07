@@ -22,11 +22,14 @@
         <div class="container-fluid main-content">
             <div class="row">
                 <div class="table-responsive">
-                    <p class="lead text-center">
-                        Liste des utilisateurs enregistrés sur le site
-                    </p>
                     <table class="table table-dark table-striped table-hover table-sm">
                         <thead>
+                        <tr class="sm-grid">
+                            <th class="text-center h3" colspan="12">
+                                Liste des utilisateurs enregistrés sur le site
+                                <hr>
+                            </th>
+                        </tr>
                         <tr class="sm-grid">
                             <th scope="col">Id</th>
                             <th scope="col">Pseudo</th>
@@ -77,12 +80,15 @@
                     </table>
                 </div>
             </div>
-            <p class="lead text-center">
-                Liste des commentaires
-            </p>
             <div class="row">
             <table class="table table-dark table-striped table-hover table-sm">
             <thead>
+            <tr class="sm-grid">
+                <th class="text-center h3" colspan="12">
+                    Liste des commentaires
+                    <hr>
+                </th>
+            </tr>
             <tr class="sm-grid">
                 <th scope="col">Id</th>
                 <th scope="col">Auteur</th>

@@ -6,12 +6,14 @@
  * Time: 18:06
  */
 ?>
-
-   <p class="lead text-center author-content">
-        Fonctionnalités Auteur
-    </p>
-    <table class="table table-dark table-striped table-hover table-sm">
+ <table class="table table-dark table-striped table-hover table-sm">
         <thead>
+        <tr class="sm-grid">
+            <th class="text-center h3" colspan="12">
+                Fonctionnalités Auteur
+                <hr>
+            </th>
+        </tr>
         <tr class="sm-grid">
             <th scope="col">Id de l'article</th>
             <th scope="col">Résumé</th>
@@ -56,4 +58,4 @@
             </tr>
         <?php }?>
         </tbody>
-    </table>
+</table>

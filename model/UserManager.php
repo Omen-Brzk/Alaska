@@ -100,7 +100,7 @@ class UserManager extends Database
     {
         $usersList = [];
 
-        $req = $this->_db->query('SELECT * FROM users');
+        $req = $this->_db->query('SELECT * FROM users ORDER BY groupId DESC');
 
         while($user = $req->fetch(PDO::FETCH_ASSOC))
         {

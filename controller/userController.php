@@ -113,24 +113,27 @@ function userDisconnect()
     header('Location: index.php');
 }
 
-function showUserAccount($user)
+function showUserAccount()
 {
-    $userManager = new UserManager();
-
     if(!isset($_SESSION['user']))
     {
-        header('Location: index.php');
+        showError404('Vous devez être connecté pour accéder à votre compte');
     }
-
-    if(isset($_SESSION['user']) && $_SESSION['user']->getGroupId() == User::IS_USER )
+    else
     {
-        $title = 'Mon compte';
-        require('view/frontend/account.php');
-    }
+        $userManager = new UserManager();
+        $user = $userManager->getUserByNameOrId($_SESSION['user']->getId());
 
-    elseif(isset($_SESSION['user']) && $_SESSION['user']->getGroupId() == User::IS_AUTHOR OR User::IS_ADMIN )
-    {
-        admin_showPanel();
+        if(isset($_SESSION['user']) && $_SESSION['user']->getGroupId() == User::IS_USER )
+        {
+            $title = 'Mon compte';
+            require('view/frontend/account.php');
+        }
+
+        elseif(isset($_SESSION['user']) && $_SESSION['user']->getGroupId() == User::IS_AUTHOR OR User::IS_ADMIN )
+        {
+            admin_showPanel();
+        }
     }
 }
 

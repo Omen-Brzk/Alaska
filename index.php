@@ -30,12 +30,12 @@ if(isset($_GET['action']))
 
     }
 
-    elseif ($_GET['action'] == 'createPost' && isset($_SESSION['user']) && $_SESSION['user']->getGroupId() == User::IS_AUTHOR)
+    elseif ($_GET['action'] == 'createPost')
     {
         createPost($_POST);
     }
 
-    elseif ($_GET['action'] == 'editPost' && isset($_SESSION['user']) && $_SESSION['user']->getGroupId() == User::IS_AUTHOR)
+    elseif ($_GET['action'] == 'editPost')
     {
         if(isset($_POST['submit']))
         {
@@ -112,20 +112,12 @@ if(isset($_GET['action']))
 
     elseif($_GET['action'] == 'unReportComment' && isset($_GET['commentId']))
     {
-        if(isset($_SESSION['user']) && $_SESSION['user']->getId() > 1)
-        {
-            unReportComment($_GET['commentId']);
-        }
-        else
-        {
-            showAllPost();
-        }
+        unReportComment($_GET['commentId']);
     }
 
     elseif($_GET['action'] == 'showAccount')
     {
-
-        showUserAccount($_SESSION['user']);
+        showUserAccount();
     }
 
     elseif ($_GET['action'] == 'register' && !isset($_SESSION['user']))

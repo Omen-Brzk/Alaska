@@ -111,7 +111,7 @@ function sendUserEditComment($datas)
             $commentList = $commentManager->getAllReportComment();
 
             $postManager = new PostManager();
-            $postList = $postManager->getAllPost(5,0);
+            $postList = $postManager->getAllPostAdmin();
 
             $title = "Administration";
 
@@ -150,7 +150,7 @@ function deleteUserComment($commentId)
                 $commentManager = new CommentManager();
                 $commentList = $commentManager->getAllReportComment();
                 $postManager = new PostManager();
-                $postList = $postManager->getAllPost(5,0);
+                $postList = $postManager->getAllPostAdmin();
                 $title = "Administration";
                 header('Location:index.php?action=showAccount');
             }
@@ -221,7 +221,7 @@ function sendUserEdit($datas)
     $commentList = $commentManager->getAllReportComment();
 
     $postManager = new PostManager();
-    $postList = $postManager->getAllPost(5,0);
+    $postList = $postManager->getAllPostAdmin();
 
     $title = "Administration";
 
@@ -312,7 +312,7 @@ function createPost($datas)
             $commentList = $commentManager->getAllReportComment();
 
             $postManager = new PostManager();
-            $postList = $postManager->getAllPost(5,0);
+            $postList = $postManager->getAllPostAdmin();
 
             $title = "Administration";
 
@@ -376,7 +376,7 @@ function sendPostEdit($datas)
     $commentList = $commentManager->getAllReportComment();
 
     $postManager = new PostManager();
-    $postList = $postManager->getAllPost(5,0);
+    $postList = $postManager->getAllPostAdmin();
 
     $title = "Administration";
 

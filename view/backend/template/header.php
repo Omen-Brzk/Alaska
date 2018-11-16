@@ -14,7 +14,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <title><?= isset($title) ? $title : 'Page inconnue' ?></title>
 
     <!-- PERSONNAL CSS -->
@@ -54,7 +54,7 @@
     if(isset($_SESSION['user']))
         { ?>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-        <a class="navbar-brand" href="index.php"><strong>Billet simple pour l' Alaska</strong></a>
+        <a class="navbar-brand" href="index.php?action=showAccount"><strong>Billet simple pour l'Alaska | <i class="fas fa-cogs"></i> Panel Administration</strong></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

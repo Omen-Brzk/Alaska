@@ -20,7 +20,6 @@
 { ?>
     <body class="admin-panel-bg">
         <div class="container-fluid main-content">
-            <div class="row">
                 <div class="table-responsive">
                     <table class="table table-dark table-striped table-hover table-sm">
                         <thead>
@@ -46,7 +45,7 @@
                                     <td><?= $user->getId() ?></td>
                                     <td><?= $user->getUsername() ?></td>
                                     <td><?= $user->getMail() ?></td>
-                                    <td><?= $user->getDateSignin() ?></td>
+                                    <td><?= convertDatetimeToString($user->getDateSignin()) ?></td>
                                     <td><?php  if($user->getGroupId() == User::IS_USER) { ?>
                                             <span class="badge badge-pill badge-primary">Utilisateur</span>
                                         <?php }
@@ -80,7 +79,7 @@
                     </table>
                 </div>
             </div>
-            <div class="row">
+        <div class="container-fluid">
             <table class="table table-dark table-striped table-hover table-sm">
             <thead>
             <tr class="sm-grid">
@@ -107,7 +106,7 @@
                             <td><?= $comment->getId() ?></td>
                             <td><?= isset($user) && !is_null($user->getUsername()) ? $user->getUsername() : '<em>Utilisateur supprimé</em>' ?></td>
                             <td><?= $comment->getCommentText() ?></td>
-                            <td><?= $comment->getCommentDate() ?></td>
+                            <td><?= convertDatetimeToString($comment->getCommentDate()) ?></td>
                             <?php if($comment->getReports() > 0) { ?>
                                     <td><i class="far fa-circle text-red" data-placement="bottom" data-toggle="tooltip" title="Commentaire signalé"></i></td>
                             <?php } else { ?>
@@ -133,7 +132,6 @@
                 </tr>
             <?php }?>
                 </table>
-            </div>
         </div>
     </body>
  <?php }

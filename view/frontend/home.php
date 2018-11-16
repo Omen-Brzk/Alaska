@@ -23,7 +23,7 @@
         </div>
     </header>
 
-    <?php if(isset($posts))
+    <?php if(isset($posts) && !empty($posts))
     { ?>
         <?php foreach ($posts as $post)
         { ?>
@@ -44,27 +44,36 @@
                 </div>
             </div>
         </div>
-
         <hr>
-            <?php
-        }
-    }
+        <?php
+        } ?>
+        <!-- PAGINATION -->
+            <nav aria-label="pagination navigation">
+                <ul class="pagination justify-content-center">
+                    <?php
+                    for($i = 0; $i < $pages; $i++)
+                    {
+                        $number = $i;
+                        echo '<li class="page-item"><a class="page-link" href="index.php?page=' . $i . '">' . ++$number . '</a></li>';
+                    }
+                    ?>
+                </ul>
+            </nav>
+    <?php }
     else
-    {
-        echo '<div class="alert alert-danger text-center">Aucun article</div>';
-    }
+    { ?>
+        <div class="container">
+            <div class="row">
+                <div class="text-center alert alert-danger col-lg-8 col-md-10 mx-auto">Aucun article n'a été posté !
+                <p class="lead">N'hésitez pas à revenir plus tard !</p>
+                    <p class="small float-right">Jean Forteroche</p>
+                </div>
+            </div>
+        </div>
 
-    /** PAGINATION */
-?> <nav aria-label="pagination navigation">
-    <ul class="pagination justify-content-center">
     <?php
-    for($i = 0; $i <= $pages; $i++)
-    {
-        $number = $i;
-        echo '<li class="page-item"><a class="page-link" href="index.php?page=' . $i . '">' . ++$number . '</a></li>';
     }
-    ?>
-    </ul>
-    </nav>
+?>
+
 <?php $content = ob_get_clean();
 require('template/body.php'); ?>

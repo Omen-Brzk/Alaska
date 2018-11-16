@@ -15,12 +15,9 @@ function showAllPost($page = 0)
     $postManager = new PostManager();
 
     $maxPost = 5;
-    $pages = round((int)$postManager->getPostsCount() / $maxPost, 0, PHP_ROUND_HALF_UP);
+    $pages = round((int)$postManager->getPostsCount() / $maxPost, 1, PHP_ROUND_HALF_UP);
 
     $posts = $postManager->getAllPost($maxPost, $page * 5);
-
-    if(empty($posts))
-        return showError404('Cette page n\'existe pas');
 
     $title = 'Accueil';
 

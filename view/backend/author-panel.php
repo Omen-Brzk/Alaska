@@ -6,7 +6,8 @@
  * Time: 18:06
  */
 ?>
- <table class="table table-dark table-striped table-hover table-sm">
+<div class="container-fluid">
+    <table class="table table-dark table-striped table-hover table-sm">
         <thead>
         <tr class="sm-grid">
             <th class="text-center h3" colspan="12">
@@ -26,31 +27,27 @@
         <?php if(!empty($postList))
         { ?>
             <tr class="sm-grid">
-                    <td class="text-center" colspan="6">
-                        <a class="btn btn-outline-light" href="index.php?action=createPost">Créer un article</a>
-                    </td>
-                </tr>
+                <td class="text-center" colspan="6">
+                    <a class="btn btn-outline-light" href="index.php?action=createPost"><i class="fas fa-pen"></i> Créer un article</a>
+                </td>
+            </tr>
             <?php foreach ($postList as $post) { ?>
-                <tr class="sm-grid">
-                    <td><?= $post->getId() ?></td>
-                    <td><?= $post->getPostRecap() ?></td>
-                    <td><?= $post->getCreationDate() ?></td>
-                    <td>
-                        <a class="btn btn-outline-success btn-sm" href="index.php?action=showPost&id=<?= $post->getId() ?>">Accéder à l'article</a>
-                    </td>
-                    <td>
-                        <a class="btn btn-outline-info btn-sm" href="index.php?action=editPost&id=<?= $post->getId() ?>">Editer l'article</a>
-                    </td>
-                    <td>
-                        <a class="btn btn-outline-danger btn-sm" href="index.php?action=deletePost&id=<?= $post->getId() ?>">Supprimer l'article</a>
-                    </td>
-                </tr>
-            <?php }
+            <tr class="sm-grid">
+                <td><?= $post->getId() ?></td>
+                <td><?= $post->getPostRecap() ?></td>
+                <td><?= convertDatetimeToString($post->getCreationDate()) ?></td>
+                <td>
+                    <a class="btn btn-outline-success" data-placement="bottom" data-toggle="tooltip" title="Lire l'article" href="index.php?action=showPost&id=<?= $post->getId() ?>"> <i class="fas fa-glasses"></i></a>
+                    <a class="btn btn-outline-info" data-placement="bottom" data-toggle="tooltip" title="Editer l'article" href="index.php?action=editPost&id=<?= $post->getId() ?>"> <i class="fas fa-edit"></i> </a>
+                    <a class="btn btn-outline-danger" data-placement="bottom" data-toggle="tooltip" title="Supprimer l'article" href="index.php?action=deletePost&id=<?= $post->getId() ?>"> <i class="fas fa-trash-alt"></i> </a>
+                </td>
+            </tr>
+        <?php }
         }
         else { ?>
             <tr class="sm-grid">
                 <td class="text-center" colspan="6">
-                    <a class="btn btn-outline-light btn-sm" href="index.php?action=createPost">Créer un article</a>
+                    <a class="btn btn-outline-light" href="index.php?action=createPost">Créer un article</a>
                 </td>
             </tr>
             <tr class="sm-grid">
@@ -58,4 +55,5 @@
             </tr>
         <?php }?>
         </tbody>
-</table>
+    </table>
+</div>

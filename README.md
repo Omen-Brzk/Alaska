@@ -9,7 +9,7 @@
  - **[Tiny MCE](https://www.tiny.cloud)** (Editeur de texte WYSIWYG)
  - HTML / CSS (Architecture du site / Design personnel )
 
-![enter image description here](http://puu.sh/C0z2b/600860c620.jpg)
+![enter image description here](https://cdn.discordapp.com/attachments/395859711825805317/506673404934619136/6d22e5c9-dbc2-46ca-9d93-4093b8ca6f8a.png)
 
 
 # Créez un blog pour un écrivain
@@ -27,7 +27,7 @@
 -   Construire une base de données
 -   Récupérer la saisie d’un formulaire utilisateur en langage PHP
 
-![enter image description here](http://puu.sh/C0zw5/f491028374.jpg)
+![enter image description here](https://cdn.discordapp.com/attachments/395859711825805317/606118740467384331/unknown.png)
 
 **Consignes du projet :**
 
@@ -45,4 +45,4 @@ L'interface d'administration sera protégée par mot de passe. La rédaction de 
 Vous développerez en PHP sans utiliser de framework pour vous familiariser avec les concepts de base de la programmation. Le code sera construit sur une **architecture MVC**. Vous développerez autant que possible en **orienté objet** (au minimum, le modèle doit être construit sous forme d'objet).
 
 ## Architecture du projet
-![enter image description here](http://puu.sh/C0z8v/4ed128f552.png)![enter image description here](http://puu.sh/C0zrQ/2057a06286.png)
+![enter image description here](https://cdn.discordapp.com/attachments/395859711825805317/606118172122152970/ss2019-07-31at03.33.32.png)![enter image description here](https://cdn.discordapp.com/attachments/395859711825805317/606119170609905683/dff46df56d.png)
